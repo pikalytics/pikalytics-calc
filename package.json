@@ -1,0 +1,23 @@
+{
+  "name": "pikalytics-calc",
+  "description": "The official damage calculator of Pikalytics.",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "serve -l 5000"
+  },
+  "homepage": "https://pikalytics.com/calc",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GriffinLedingham/pikalytics-calc.git"
+  },
+  "author": {
+    "name": "Griffin Ledingham",
+    "email": "gcledingham@gmail.com",
+    "url": "https://griffinledingham.me"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@smogon/calc": "^0.6.0",
+    "serve": "^11.3.2"
+  }
+}
