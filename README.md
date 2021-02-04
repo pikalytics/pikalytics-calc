@@ -1,4 +1,6 @@
-![Pikalytics Damage Calc](calc.png | width=300)
+<p align="center">
+<img style="margin:auto;" src="calc.png" width=800 />
+</p>
 
 Pikalytics Damage Calculator
 =======================
