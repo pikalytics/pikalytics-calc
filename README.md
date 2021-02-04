@@ -1,5 +1,5 @@
 <p align="center">
-<img style="margin:auto;" src="calc.png" width=800 />
+<img style="margin:auto;" src="https://github.com/GriffinLedingham/pikalytics-calc/blob/master/calc.png?raw=true" width=700 />
 </p>
 
 Pikalytics Damage Calculator
