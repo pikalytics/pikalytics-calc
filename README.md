@@ -9,6 +9,8 @@ This repo represents a fairly direct extraction of Pikalytics Damage Calculator 
 
 Under the hood calculator logic is directly utilizing on the ongoing project [@smogon/calc](https://github.com/smogon/damage-calc). This repository mostly serves to improve and update the Pikalytics-specific interface and how this UI ties in to the @smogon/calc library under the hood. If you would like to use a different version of @smogon/calc, you can reinstall the npm module at a different version and this calculator will utilize that version.
 
+The [Pikalytics Setdex](dmgcalc/js/setdex_pikalytics_v10.js) is derived from the [pikalytics-setdex](https://github.com/GriffinLedingham/pikalytics-setdex) generator project, and new Pikalytics Setdexes can be generated via this other repository (contributors would be welcome to generate & pull request OU, Ubers, etc. setdexes based on Smogon usage, by utilizing the pikalytics-setdex tool).
+
 Instructions
 ------------
 
