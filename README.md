@@ -23,6 +23,6 @@ Credits and license
 
 MIT License.
 
-This project was originally created by Honko, and is maintained by Pikalytics.
+This project was originally created by Honko, and is maintained by Pikalytics and the community.
 
 Many other contributors have added features or contributed bug fixes over time. See the [Smogon Damage Calc Contributors](https://github.com/smogon/damage-calc/graphs/contributors) for a list of many contributors that participated in the source code that led to Pikalytics Damage Calc.
