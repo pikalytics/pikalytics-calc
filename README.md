@@ -7,6 +7,8 @@ This repo is intended to provide an avenue of community contribution to the ever
 
 This repo represents a fairly direct extraction of Pikalytics Damage Calculator out of the main closed source repository. Some file references have been update in index.html to support this, and some references have been hard-coded to utilize Pikalytics' production CDN (for simplicity & consistency sake). This is a WIP repository, and there will likely be issues that arise due to this attempt at decoupling the calculator from the main Pikalytics repository.
 
+Under the hood calculator logic is directly utilizing on the ongoing project [@smogon/calc](https://github.com/smogon/damage-calc). This repository mostly serves to improve and update the Pikalytics-specific interface and how this UI ties in to the @smogon/calc library under the hood. If you would like to use a different version of @smogon/calc, you can reinstall the npm module at a different version and this calculator will utilize that version.
+
 Instructions
 ------------
 
