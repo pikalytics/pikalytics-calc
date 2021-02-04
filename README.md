@@ -1,3 +1,5 @@
+![Pikalytics Damage Calc](calc.png | width=300)
+
 Pikalytics Damage Calculator
 =======================
 
