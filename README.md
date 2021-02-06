@@ -1,4 +1,6 @@
-![Pikalytics Damage Calc](calc.png | width=300)
+<p align="center">
+<img style="margin:auto;" src="https://github.com/GriffinLedingham/pikalytics-calc/blob/master/calc.png?raw=true" width=700 />
+</p>
 
 Pikalytics Damage Calculator
 =======================
