@@ -55,6 +55,9 @@ function CALCULATE_ALL_MOVES_SM(p1, p2, field) {
                 terrain: field.getTerrain(),
                 gameType: field.getFormat(),
                 isGravity: field.getGravity(),
+                isAuraBreak: field.getAuraBreak(),
+                isFairyAura: field.getFairyAura(),
+                isDarkAura: field.getDarkAura(),
             },
             side1,
             side2
@@ -68,6 +71,9 @@ function CALCULATE_ALL_MOVES_SM(p1, p2, field) {
                 terrain: field.getTerrain(),
                 gameType: field.getFormat(),
                 isGravity: field.getGravity(),
+                isAuraBreak: field.getAuraBreak(),
+                isFairyAura: field.getFairyAura(),
+                isDarkAura: field.getDarkAura(),
             },
             side2,
             side1

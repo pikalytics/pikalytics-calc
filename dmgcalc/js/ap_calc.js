@@ -1026,6 +1026,9 @@ function getMoveDetails(moveInfo, isMax, species) {
 function Field() {
     var format = $("input:radio[name='format']:checked").val()
     var isGravity = $('#gravity').prop('checked')
+    var isAuraBreak = $('#aura-break').prop('checked')
+    var isFairyAura = $('#fairy-aura').prop('checked')
+    var isDarkAura = $('#dark-aura').prop('checked')
     var isSR = [$('#srL').prop('checked'), $('#srR').prop('checked')]
     var isProtect = [
         $('#protectL').prop('checked'),
@@ -1084,7 +1087,15 @@ function Field() {
     this.getGravity = function () {
         return isGravity
     }
-
+    this.getAuraBreak = function () {
+        return isAuraBreak
+    }
+    this.getFairyAura = function () {
+        return isFairyAura
+    }
+    this.getDarkAura = function () {
+        return isDarkAura
+    }
     this.getWeather = function () {
         return weather
     }
