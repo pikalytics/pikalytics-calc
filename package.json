@@ -17,7 +17,9 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@smogon/calc": "^0.6.0",
     "serve": "^11.3.2"
+  },
+  "dependencies": {
+    "@pikalytics/calc": "^0.5.0"
   }
 }
