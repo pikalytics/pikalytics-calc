@@ -1,7 +1,8 @@
 var SETDEX_SS = {};
 
 var components = [
-    SETDEX_PIKALYTICS
+    SETDEX_PIKALYTICS,
+    SETDEX_PIKALYTICS_OU
 ];
 
 var gmax = [
@@ -57,6 +58,7 @@ var reloadXYScript = function()
   console.log(SETDEX_CUSTOM);
     components = [
     SETDEX_PIKALYTICS,
+    SETDEX_PIKALYTICS_OU,
     SETDEX_CUSTOM,
 ];
 
