@@ -1,5 +1,5 @@
 <p align="center">
-<img style="margin:auto;" src="https://github.com/GriffinLedingham/pikalytics-calc/blob/master/calc.png?raw=true" width=700 />
+<img style="margin:auto;" src="https://github.com/pikalytics/pikalytics-calc/blob/master/calc.png?raw=true" width=700 />
 </p>
 
 Pikalytics Damage Calculator
@@ -11,7 +11,7 @@ This repo is intended to provide an avenue for community contribution to the eve
 
 This repo represents a fairly direct extraction of Pikalytics Damage Calculator out of the main closed source repository. Some file references have been update in index.html to support this, and some references have been hard-coded to utilize Pikalytics' production CDN (for simplicity & consistency sake). This is a WIP repository, and there will likely be issues that arise due to this attempt at decoupling the calculator from the main Pikalytics repository.
 
-Under the hood calculator logic is running on [@pikalytics/calc](https://github.com/GriffinLedingham/damage-calc) (forked from the ongoing project [@smogon/calc](https://github.com/smogon/damage-calc)). This repository mostly serves to improve and update the Pikalytics Damage Calc-specific interface and how this UI ties in to the @pikalytics/calc library under the hood. If you would like to use a different version/fork of @pikalytics/calc, you can reinstall the npm module at a different version and this calculator will utilize that version.
+Under the hood calculator logic is running on [@pikalytics/calc](https://github.com/pikalytics/damage-calc) (forked from the ongoing project [@smogon/calc](https://github.com/smogon/damage-calc)). This repository mostly serves to improve and update the Pikalytics Damage Calc-specific interface and how this UI ties in to the @pikalytics/calc library under the hood. If you would like to use a different version/fork of @pikalytics/calc, you can reinstall the npm module at a different version and this calculator will utilize that version.
 
 If you're developing on a local fork of the @pikalytics/calc or @smogon/calc module, you'll need to change the `production.min.js` and `data/production.min.js` references in [index.html](dmgcalc/index.html) to point to your local dev copies of those files.
 
