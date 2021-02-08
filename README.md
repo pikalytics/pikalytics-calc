@@ -5,6 +5,8 @@
 Pikalytics Damage Calculator
 =======================
 
+![Tests](https://github.com/pikalytics/pikalytics-calc/workflows/Tests/badge.svg)
+
 [Pikalytics' Damage Calculator](https://pikalytics.com/calc) for Pokemon Sword & Shield Doubles and Singles formats (with VGC 2020/2021 focused sets and support). Based on Honko/Zarel's Damage Calc project which lives on through the [Smogon Damage Calc](https://github.com/smogon/damage-calc).
 
 This repo is intended to provide an avenue for community contribution to the ever evolving Pikalytics Damage Calculator. Please feel free to submit well documented pull requests for changes or functionality you would like to see added to the Pikalytics' Damage Calculator!
