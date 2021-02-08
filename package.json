@@ -3,7 +3,8 @@
   "description": "The official damage calculator of Pikalytics.",
   "version": "1.0.0",
   "scripts": {
-    "dev": "serve -l 5000"
+    "dev": "serve -l 5000",
+    "test": "jest"
   },
   "homepage": "https://pikalytics.com/calc",
   "repository": {
@@ -20,6 +21,10 @@
     "serve": "^11.3.2"
   },
   "dependencies": {
-    "@pikalytics/calc": "^0.5.1"
+    "@pikalytics/calc": "^0.5.1",
+    "expect-puppeteer": "^4.4.0",
+    "jest": "^26.6.3",
+    "jest-puppeteer": "^4.4.0",
+    "puppeteer": "^2.1.1"
   }
 }
