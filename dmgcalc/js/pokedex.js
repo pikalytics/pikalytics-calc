@@ -13783,7 +13783,7 @@ var POKEDEX_SS = $.extend(true, {}, POKEDEX_SM, {
         },
         w: 110,
         ab: 'Intrepid Sword',
-        formes: ['Zacian', 'Zacian-Crowned'],
+        formes: ['Zacian-Crowned', 'Zacian'],
     },
     'Zacian-Crowned': {
         t1: 'Fairy',
