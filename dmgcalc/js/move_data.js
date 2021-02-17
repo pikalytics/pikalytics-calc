@@ -3502,6 +3502,11 @@ var MOVES_SS = $.extend(true, {}, MOVES_SM, {
     'Max Darkness': {
         type: 'Dark',
     },
+    'Steam Eruption': {
+        type: 'Water',
+        bp: 110,
+        category: 'Special'
+    }
 })
 
 var MAXMOVES_LOOKUP = {
