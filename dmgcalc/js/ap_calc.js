@@ -793,7 +793,14 @@ function calculateAll(rerender_surv_dd = true) {
         $("label[for='maxR']").text('Dynamax')
     }
 
+    renderSpeedCalcs(p1,p2)
+
     renderSurvCalcPanel(p1,p2, rerender_surv_dd);
+}
+
+function renderSpeedCalcs(p1,p2) {
+    $('#p1_speed_calc').text(p1.stats.sp)
+    $('#p2_speed_calc').text(p2.stats.sp)
 }
 
 function renderSurvCalcPanel(p1,p2, rerender_surv_dd) {
