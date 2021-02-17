@@ -803,7 +803,7 @@ function renderSurvCalcPanel(p1,p2, rerender_surv_dd) {
         <div>
             <span class="sprite-xyicons ${p1.name.toLowerCase()}" style="display:inline-block;vertical-align:middle;"></span>
             Survival EV Minimizer
-            <span class="sprite-xyicons ${p1.name.toLowerCase()}" style="display:inline-block;vertical-align:middle;"></span>
+            <span class="sprite-xyicons ${p2.name.toLowerCase()}" style="display:inline-block;vertical-align:middle;"></span>
         </div>
     `)
 
