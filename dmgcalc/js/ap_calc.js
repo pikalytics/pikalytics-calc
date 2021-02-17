@@ -854,7 +854,7 @@ function survCalcButton() {
             let isPhys = survRes.def != undefined
             let offEV = p2.evs[(isPhys == true)?'at':'sa']
             let offEVTitle = (isPhys == true)?'Atk':'SpA'
-            let resultString = `<div style="line-height:20px;font-size:11px;margin-top:10px;margin-bottom:6px;background:rgba(0,0,0,0.05);border-radius:4px;padding:10px;">+${offEV} ${offEVTitle} ${i} vs. <b>${survRes.hp} HP / `
+            let resultString = `<div style="line-height:20px;white-space: nowrap;overflow: auto;font-size:11px;margin-top:10px;margin-bottom:6px;background:rgba(0,0,0,0.05);border-radius:4px;padding:10px;">+${offEV} ${offEVTitle} ${i} vs. <b>${survRes.hp} HP / `
             if(survRes.def != undefined) {
                 resultString += `${survRes.def} Def</b> ${p1.name}:<br>`
             } else {
