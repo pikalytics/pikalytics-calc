@@ -41,7 +41,7 @@ function survCalc(attacker, defender, field, maxPer, move = null, forceEV = {}) 
       for (let hp = forceHP; hp <= 252; hp += 4) {
         for (let def = forceDef; def <= 252; def += 4) {
           attacker.evs = { hp, at: 0, df: def, sa: 0, sd: forceSpD, sp: 0 };
-          if(attacker.evs.hp + attacker.evs.at + attacker.evs.df + attacker.evs.sa + attacker.evs.sd + attacker.evs.sp > 510)
+          if(parseInt(attacker.evs.hp) + parseInt(attacker.evs.at) + parseInt(attacker.evs.df) + parseInt(attacker.evs.sa) + parseInt(attacker.evs.sd) + parseInt(attacker.evs.sp) > 510)
             continue
           const result = CALCULATE_ALL_MOVES_SM(attacker, defender, field)[1][defenderMoveIndex];
           const returnResult = {
@@ -81,7 +81,7 @@ function survCalc(attacker, defender, field, maxPer, move = null, forceEV = {}) 
       for (let hp = forceHP; hp <= 252; hp += 4) {
         for (let spd = forceSpD; spd <= 252; spd += 4) {
           attacker.evs = { hp, at: 0, df: forceDef, sa: 0, sd: spd, sp: 0 };
-          if(attacker.evs.hp + attacker.evs.at + attacker.evs.df + attacker.evs.sa + attacker.evs.sd + attacker.evs.sp > 510)
+          if(parseInt(attacker.evs.hp) + parseInt(attacker.evs.at) + parseInt(attacker.evs.df) + parseInt(attacker.evs.sa) + parseInt(attacker.evs.sd) + parseInt(attacker.evs.sp) > 510)
             continue
           const result = CALCULATE_ALL_MOVES_SM(attacker, defender, field)[1][defenderMoveIndex];
           const returnResult = {
