@@ -823,7 +823,9 @@ function renderSurvCalcPanel(p1,p2, rerender_surv_dd) {
         }
     }
 
-    $('#surv_calc_results').html(``);
+    if(p1.name + p2.name != this.lastSurv) {
+        $('#surv_calc_results').html(``);
+    }
 
     $('#surv_calc_you').text(`${p1.name}'s`)
     $('#surv_calc_opp').text(`${p2.name}'s`)
@@ -838,9 +840,16 @@ function survCalcButton() {
         const p1 = new Pokemon($('#p1'))
         const p2 = new Pokemon($('#p2'))
         const field = new Field()
+
+        this.lastSurv = p1.name + p2.name
+
         const hpRem = (100 - ($('#surv_calc_perc').val() || 0));
         let move = $('#surv_calc_select').val() || null
-        const result = survCalc(p1,p2,field, hpRem, move)
+        const forceEV = {};
+        if($('#surv_def_fixed').val() > 0) forceEV.def = $('#surv_def_fixed').val()
+        if($('#surv_hp_fixed').val() > 0) forceEV.hp = $('#surv_hp_fixed').val()
+        if($('#surv_spd_fixed').val() > 0) forceEV.spd = $('#surv_spd_fixed').val()
+        const result = survCalc(p1,p2,field, hpRem, move, forceEV)
 
         $('#surv_button_loader').hide();
         $('#surv_calc_button').show();
@@ -848,7 +857,7 @@ function survCalcButton() {
         for(let i in result) {
             if(result[i] == undefined) {
                 $('#surv_calc_results').append(`
-                    <div style="margin-top:6px;margin-bottom:6px;background:rgba(0,0,0,0.5);border-radius:12px;">${i} - Impossible</div>
+                <div style="line-height:20px;white-space: nowrap;overflow: auto;font-size:11px;margin-top:10px;margin-bottom:6px;background:rgba(0,0,0,0.05);border-radius:4px;padding:10px;">${i} vs. ${p1.name} survive with >= ${$('#surv_calc_perc').val()}% HP:<br>&nbsp;&nbsp;&nbsp;&nbsp;Impossible</div>
                 `)
                 continue
             }

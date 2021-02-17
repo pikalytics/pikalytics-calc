@@ -1,7 +1,15 @@
-function survCalc(attacker, defender, field, maxPer, move = null) {
+function survCalc(attacker, defender, field, maxPer, move = null, forceEV = {}) {
   const resultObj = {};
   // Clear attacker moves to speed up calc
   attacker.moves = [];
+
+  let forceHP = 0;
+  let forceDef = 0;
+  let forceSpD = 0;
+
+  if(forceEV.hp != undefined) forceHP = forceEV.hp;
+  if(forceEV.def != undefined) forceDef = forceEV.def;
+  if(forceEV.spd != undefined) forceSpD = forceEV.spd;
 
   let defMoves = defender.moves
   if(move != null) {
@@ -20,7 +28,6 @@ function survCalc(attacker, defender, field, maxPer, move = null) {
 
     let maxHP = false;
     let maxDef = false;
-    attacker.evs = { hp: 0, at: 0, df: 0, sa: 0, sd: 0, sp: 0 };
 
     const allResults = [];
     const perResults = [];
@@ -31,9 +38,11 @@ function survCalc(attacker, defender, field, maxPer, move = null) {
       };
 
     if (isPhys) {
-      for (let hp = 0; hp <= 252; hp += 4) {
-        for (let def = 0; def <= 252; def += 4) {
-          attacker.evs = { hp, at: 0, df: def, sa: 0, sd: 0, sp: 0 };
+      for (let hp = forceHP; hp <= 252; hp += 4) {
+        for (let def = forceDef; def <= 252; def += 4) {
+          attacker.evs = { hp, at: 0, df: def, sa: 0, sd: forceSpD, sp: 0 };
+          if(attacker.evs.hp + attacker.evs.at + attacker.evs.df + attacker.evs.sa + attacker.evs.sd + attacker.evs.sp > 510)
+            continue
           const result = CALCULATE_ALL_MOVES_SM(attacker, defender, field)[1][defenderMoveIndex];
           const returnResult = {
             move: move,
@@ -46,17 +55,18 @@ function survCalc(attacker, defender, field, maxPer, move = null) {
             per:
               result.damage[result.damage.length - 1] /
               calcMaxHP(
-                result.description.resultObj.attacker.species.baseStats.hp,
+                result.description.resultObj.defender.species.baseStats.hp,
                 hp,
                 31,
                 50
-              )
+              ),
+            resultObj: result.description.resultObj
           }
           allResults.push(returnResult)
           if (
               result.damage[result.damage.length - 1] /
               calcMaxHP(
-                result.description.resultObj.attacker.species.baseStats.hp,
+                result.description.resultObj.defender.species.baseStats.hp,
                 hp,
                 31,
                 50
@@ -68,9 +78,11 @@ function survCalc(attacker, defender, field, maxPer, move = null) {
         }
       }
     } else {
-      for (let hp = 0; hp <= 252; hp += 4) {
-        for (let spd = 0; spd <= 252; spd += 4) {
-          attacker.evs = { hp, at: 0, df: 0, sa: 0, sd: spd, sp: 0 };
+      for (let hp = forceHP; hp <= 252; hp += 4) {
+        for (let spd = forceSpD; spd <= 252; spd += 4) {
+          attacker.evs = { hp, at: 0, df: forceDef, sa: 0, sd: spd, sp: 0 };
+          if(attacker.evs.hp + attacker.evs.at + attacker.evs.df + attacker.evs.sa + attacker.evs.sd + attacker.evs.sp > 510)
+            continue
           const result = CALCULATE_ALL_MOVES_SM(attacker, defender, field)[1][defenderMoveIndex];
           const returnResult = {
             move: move,
@@ -83,17 +95,18 @@ function survCalc(attacker, defender, field, maxPer, move = null) {
             per:
               result.damage[result.damage.length - 1] /
               calcMaxHP(
-                result.description.resultObj.attacker.species.baseStats.hp,
+                result.description.resultObj.defender.species.baseStats.hp,
                 hp,
                 31,
                 50
-              )
+              ),
+            resultObj: result.description.resultObj
           }
           allResults.push(returnResult);
           if (
             result.damage[result.damage.length - 1] /
               calcMaxHP(
-                result.description.resultObj.attacker.species.baseStats.hp,
+                result.description.resultObj.defender.species.baseStats.hp,
                 hp,
                 31,
                 50
