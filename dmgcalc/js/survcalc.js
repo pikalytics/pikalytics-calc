@@ -1,5 +1,5 @@
 function survCalc(attacker, defender, field, maxPer, move = null) {
-  var resultObj = {};
+  const resultObj = {};
   // Clear attacker moves to speed up calc
   attacker.moves = [];
 
@@ -9,22 +9,21 @@ function survCalc(attacker, defender, field, maxPer, move = null) {
       return m.name == move? {name:m.name}:{name:'(No Move)'}
     })
   }
+  const gen8 = calc.Generations.get(8);
   for (let defenderMoveIndex = 0; defenderMoveIndex < 4; defenderMoveIndex++) {
     let defenderMoveObj = defMoves[defenderMoveIndex]
-    // Get move data
-    var move = defenderMoveObj.name
+    const move = defenderMoveObj.name
     if(move == '(No Move)') continue
-    var gen8 = calc.Generations.get(8);
-    var moveData = new calc.Move(gen8, defenderMoveObj.name);
+    const moveData = new calc.Move(gen8, defenderMoveObj.name);
 
-    var isPhys = moveData.category === "Physical";
+    const isPhys = moveData.category === "Physical";
 
-    var maxHP = false;
-    var maxDef = false;
+    let maxHP = false;
+    let maxDef = false;
     attacker.evs = { hp: 0, at: 0, df: 0, sa: 0, sd: 0, sp: 0 };
 
-    var allResults = [];
-    var perResults = [];
+    const allResults = [];
+    const perResults = [];
 
     Array.prototype.avg =
       function () {
@@ -35,10 +34,12 @@ function survCalc(attacker, defender, field, maxPer, move = null) {
       for (let hp = 0; hp <= 252; hp += 4) {
         for (let def = 0; def <= 252; def += 4) {
           attacker.evs = { hp, at: 0, df: def, sa: 0, sd: 0, sp: 0 };
-          var result = CALCULATE_ALL_MOVES_SM(attacker, defender, field)[1][defenderMoveIndex];
-          var returnResult = {
+          const result = CALCULATE_ALL_MOVES_SM(attacker, defender, field)[1][defenderMoveIndex];
+          const returnResult = {
             move: move,
             dmg: result.damage.avg(),
+            min: result.damage[0],
+            max: result.damage[result.damage.length - 1],
             hp,
             def,
             evTot: hp + def,
@@ -49,14 +50,7 @@ function survCalc(attacker, defender, field, maxPer, move = null) {
                 hp,
                 31,
                 50
-              ),
-            maxHP: calcMaxHP(
-              result.description.resultObj.attacker.species.baseStats.hp,
-              hp,
-              31,
-              50
-            ),
-            res: result.description.resultObj
+              )
           }
           allResults.push(returnResult)
           if (
@@ -77,10 +71,12 @@ function survCalc(attacker, defender, field, maxPer, move = null) {
       for (let hp = 0; hp <= 252; hp += 4) {
         for (let spd = 0; spd <= 252; spd += 4) {
           attacker.evs = { hp, at: 0, df: 0, sa: 0, sd: spd, sp: 0 };
-          var result = CALCULATE_ALL_MOVES_SM(attacker, defender, field)[1][defenderMoveIndex];
-          var returnResult = {
+          const result = CALCULATE_ALL_MOVES_SM(attacker, defender, field)[1][defenderMoveIndex];
+          const returnResult = {
             move: move,
             dmg: result.damage.avg(),
+            min: result.damage[0],
+            max: result.damage[result.damage.length - 1],
             hp,
             spd,
             evTot: hp + spd,
@@ -91,14 +87,7 @@ function survCalc(attacker, defender, field, maxPer, move = null) {
                 hp,
                 31,
                 50
-              ),
-            maxHP: calcMaxHP(
-              result.description.resultObj.attacker.species.baseStats.hp,
-              hp,
-              31,
-              50
-            ),
-            res: result.description.resultObj
+              )
           }
           allResults.push(returnResult);
           if (
@@ -137,7 +126,7 @@ function survCalc(attacker, defender, field, maxPer, move = null) {
 }
 
 function calcMaxHP(base, evs, ivs, level) {
-  var total;
+  let total;
   if (base === 1) {
     total = 1;
   } else {

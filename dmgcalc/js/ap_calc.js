@@ -816,6 +816,8 @@ function renderSurvCalcPanel(p1,p2, rerender_surv_dd) {
         }
     }
 
+    $('#surv_calc_results').html(``);
+
     $('#surv_calc_you').text(`${p1.name}'s`)
     $('#surv_calc_opp').text(`${p2.name}'s`)
 }
@@ -826,12 +828,12 @@ function survCalcButton() {
 
     $('#surv_calc_results').html(``);
     setTimeout(() => {
-        var p1 = new Pokemon($('#p1'))
-        var p2 = new Pokemon($('#p2'))
-        var field = new Field()
+        const p1 = new Pokemon($('#p1'))
+        const p2 = new Pokemon($('#p2'))
+        const field = new Field()
         const hpRem = (100 - ($('#surv_calc_perc').val() || 0));
         let move = $('#surv_calc_select').val() || null
-        var result = survCalc(p1,p2,field, hpRem, move)
+        const result = survCalc(p1,p2,field, hpRem, move)
 
         $('#surv_button_loader').hide();
         $('#surv_calc_button').show();
@@ -843,19 +845,22 @@ function survCalcButton() {
                 `)
                 continue
             }
-            var survRes = result[i]
-            var closestTry = false;
+            const survRes = result[i]
+            let closestTry = false;
             if(100 - (survRes.per * 100) < $('#surv_calc_perc').val() || 0) {
                 closestTry = true;
             }
-            var noInvest = (survRes.hp == 0 && (survRes.def == 0 || survRes.spd == 0))
-            var resultString = `<div style="margin-top:10px;margin-bottom:6px;background:rgba(0,0,0,0.05);border-radius:4px;padding:10px;">${i} vs. <b>${survRes.hp} HP / `
+            const noInvest = (survRes.hp == 0 && (survRes.def == 0 || survRes.spd == 0))
+            let isPhys = survRes.def != undefined
+            let offEV = p2.evs[(isPhys == true)?'at':'sa']
+            let offEVTitle = (isPhys == true)?'Atk':'SpA'
+            let resultString = `<div style="line-height:20px;font-size:11px;margin-top:10px;margin-bottom:6px;background:rgba(0,0,0,0.05);border-radius:4px;padding:10px;">+${offEV} ${offEVTitle} ${i} vs. <b>${survRes.hp} HP / `
             if(survRes.def != undefined) {
-                resultString += `${survRes.def} Def</b> < ${hpRem}% damage:<br>`
+                resultString += `${survRes.def} Def</b> ${p1.name}:<br>`
             } else {
-                resultString += `${survRes.spd} SpD</b> < ${hpRem}% damage:<br>`
+                resultString += `${survRes.spd} SpD</b> ${p1.name}:<br>`
             }
-            resultString += `&nbsp;&nbsp;&nbsp;&nbsp;${(closestTry == true)?`Impossible - Closest Try: `:''}${(survRes.per * 100).toFixed(2)}% (<span style="font-weight:bold;color:${(closestTry == true)?'red':'green'};">${(100 - (survRes.per * 100).toFixed(2)).toFixed(2)}% remaining${noInvest == true ? ' without investment':''}</span>)</div>`
+            resultString += `&nbsp;&nbsp;&nbsp;&nbsp;<b>${survRes.min}-${survRes.max}</b> (${(survRes.per * 100).toFixed(2)}%) - <span style="font-weight:bold;color:${(closestTry == true)?'red':'green'};">${(100 - (survRes.per * 100).toFixed(2)).toFixed(2)}% HP remaining${noInvest == true ? ' without investment':''}</span></div>`
             $('#surv_calc_results').append(resultString)
         }
     },100);
