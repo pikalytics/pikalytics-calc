@@ -839,7 +839,7 @@ function survCalcButton() {
         for(let i in result) {
             if(result[i] == undefined) {
                 $('#surv_calc_results').append(`
-                    <div style="margin-top:6px;margin-bottom:6px;background:rgb(248, 248, 248);border-radius:12px;">${i} - Impossible</div>
+                    <div style="margin-top:6px;margin-bottom:6px;background:rgba(0,0,0,0.5);border-radius:12px;">${i} - Impossible</div>
                 `)
                 continue
             }
@@ -849,11 +849,11 @@ function survCalcButton() {
                 closestTry = true;
             }
             var noInvest = (survRes.hp == 0 && (survRes.def == 0 || survRes.spd == 0))
-            var resultString = `<div style="margin-top:4px;margin-bottom:6px;background:rgb(248, 248, 248);border-radius:12px;padding:10px;">${i} vs. <b>${survRes.hp} HP / `
+            var resultString = `<div style="margin-top:10px;margin-bottom:6px;background:rgba(0,0,0,0.05);border-radius:4px;padding:10px;">${i} vs. <b>${survRes.hp} HP / `
             if(survRes.def != undefined) {
-                resultString += `${survRes.def} Def</b> < ${hpRem}%:<br>`
+                resultString += `${survRes.def} Def</b> < ${hpRem}% damage:<br>`
             } else {
-                resultString += `${survRes.spd} SpD</b> < ${hpRem}%:<br>`
+                resultString += `${survRes.spd} SpD</b> < ${hpRem}% damage:<br>`
             }
             resultString += `&nbsp;&nbsp;&nbsp;&nbsp;${(closestTry == true)?`Impossible - Closest Try: `:''}${(survRes.per * 100).toFixed(2)}% (<span style="font-weight:bold;color:${(closestTry == true)?'red':'green'};">${(100 - (survRes.per * 100).toFixed(2)).toFixed(2)}% remaining${noInvest == true ? ' without investment':''}</span>)</div>`
             $('#surv_calc_results').append(resultString)
