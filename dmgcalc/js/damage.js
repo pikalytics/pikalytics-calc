@@ -83,6 +83,7 @@ function CALCULATE_ALL_MOVES_SM(p1, p2, field) {
 }
 
 function GET_DAMAGE_SM(attacker, defender, move, field, side1, side2) {
+    if(move == undefined) return
     var gen8 = calc.Generations.get(8)
 
     for (var i = 0; i < showdownFormes.length; i++) {
@@ -250,6 +251,7 @@ function GET_DAMAGE_SM(attacker, defender, move, field, side1, side2) {
             p2: result.defender.name,
             move: result.move.name,
             moveType: result.move.type,
+            resultObj: result
         },
     }
 }
