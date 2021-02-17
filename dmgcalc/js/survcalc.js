@@ -44,7 +44,7 @@ function survCalc(attacker, defender, field, maxPer, move = null) {
             def,
             evTot: hp + def,
             per:
-              result.damage.avg() /
+              result.damage[result.damage.length - 1] /
               calcMaxHP(
                 result.description.resultObj.attacker.species.baseStats.hp,
                 hp,
@@ -54,7 +54,7 @@ function survCalc(attacker, defender, field, maxPer, move = null) {
           }
           allResults.push(returnResult)
           if (
-            result.damage.avg() /
+              result.damage[result.damage.length - 1] /
               calcMaxHP(
                 result.description.resultObj.attacker.species.baseStats.hp,
                 hp,
@@ -81,7 +81,7 @@ function survCalc(attacker, defender, field, maxPer, move = null) {
             spd,
             evTot: hp + spd,
             per:
-              result.damage.avg() /
+              result.damage[result.damage.length - 1] /
               calcMaxHP(
                 result.description.resultObj.attacker.species.baseStats.hp,
                 hp,
@@ -91,7 +91,7 @@ function survCalc(attacker, defender, field, maxPer, move = null) {
           }
           allResults.push(returnResult);
           if (
-            result.damage.avg() /
+            result.damage[result.damage.length - 1] /
               calcMaxHP(
                 result.description.resultObj.attacker.species.baseStats.hp,
                 hp,
