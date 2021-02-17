@@ -1913,6 +1913,25 @@
 
                         <hr class="gen-specific g2 g3 g4 g5 g6 g7 g8">
 
+                        <div id="surv_calc_title">Survival EV Minimizer</div>
+                        <div style="text-align: left;margin-top: 10px;">
+                            Minimize
+                            <span id="surv_calc_you"></span>
+                            defensive EVs to survive with: <input style="width:40px;" id="surv_calc_perc" value="75" /> % HP against
+                            <span id="surv_calc_opp"></span>
+                            <div id="surv_calc_dd" style="display: inline-block;">
+                            <select>
+                            </select>
+                            </div>
+                        </div>
+                        <div id="surv_calc_results" style="text-align: left;"></div>
+                        <div id="surv_button_wrapper" style="text-align: center;margin-top: 10px;margin-bottom: 10px;">
+                            <div id="surv_button_loader" style="display: none;margin-bottom: 10px;margin-top: 10px;"><div></div><div></div><div></div><div></div></div>
+                            <div id="surv_calc_button" class="btn btn-xwide" onclick="survCalcButton();">Calculate EVs</div>
+                        </div>
+
+                        <hr class="gen-specific g2 g3 g4 g5 g6 g7 g8">
+
                         <div class="btn-group gen-specific g5 g6 g7 g8">
                             <div
                                 class="left"
@@ -2715,6 +2734,10 @@
             <script
                 type="text/javascript"
                 src="/dmgcalc/js/ap_calc.js?v=6"
+            ></script>
+            <script
+                type="text/javascript"
+                src="/dmgcalc/js/survcalc.js?v=1"
             ></script>
             <script
                 type="text/javascript"

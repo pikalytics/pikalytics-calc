@@ -641,7 +641,7 @@ for (var i = 0; i < 4; i++) {
 }
 
 var damageResults
-function calculateAll() {
+function calculateAll(rerender_surv_dd = true) {
     var p1 = new Pokemon($('#p1'))
     var p2 = new Pokemon($('#p2'))
     var field = new Field()
@@ -792,6 +792,73 @@ function calculateAll() {
     } else {
         $("label[for='maxR']").text('Dynamax')
     }
+
+    renderSurvCalcPanel(p1,p2, rerender_surv_dd);
+}
+
+function renderSurvCalcPanel(p1,p2, rerender_surv_dd) {
+    $('#surv_calc_button').show();
+    $('#surv_button_loader').hide();
+    $('#surv_calc_title').html(`
+        <div>
+            <span class="sprite-xyicons ${p1.name.toLowerCase()}" style="display:inline-block;vertical-align:middle;"></span>
+            Survival EV Minimizer
+            <span class="sprite-xyicons ${p1.name.toLowerCase()}" style="display:inline-block;vertical-align:middle;"></span>
+        </div>
+    `)
+
+    if(rerender_surv_dd) {
+        $('#surv_calc_dd').html(`<select id="surv_calc_select"></select>`)
+        for(let i in p2.moves) {
+            const move = p2.moves[i]
+            if(move.name == '(No Move)' || move.name == undefined || move.name == '') continue
+            $('#surv_calc_select').append(`<option>${move.name}</option>`)
+        }
+    }
+
+    $('#surv_calc_you').text(`${p1.name}'s`)
+    $('#surv_calc_opp').text(`${p2.name}'s`)
+}
+
+function survCalcButton() {
+    $('#surv_calc_button').hide();
+    $('#surv_button_loader').show();
+
+    $('#surv_calc_results').html(``);
+    setTimeout(() => {
+        var p1 = new Pokemon($('#p1'))
+        var p2 = new Pokemon($('#p2'))
+        var field = new Field()
+        const hpRem = (100 - ($('#surv_calc_perc').val() || 0));
+        let move = $('#surv_calc_select').val() || null
+        var result = survCalc(p1,p2,field, hpRem, move)
+
+        $('#surv_button_loader').hide();
+        $('#surv_calc_button').show();
+
+        for(let i in result) {
+            if(result[i] == undefined) {
+                $('#surv_calc_results').append(`
+                    <div style="margin-top:6px;margin-bottom:6px;background:rgb(248, 248, 248);border-radius:12px;">${i} - Impossible</div>
+                `)
+                continue
+            }
+            var survRes = result[i]
+            var closestTry = false;
+            if(100 - (survRes.per * 100) < $('#surv_calc_perc').val() || 0) {
+                closestTry = true;
+            }
+            var noInvest = (survRes.hp == 0 && (survRes.def == 0 || survRes.spd == 0))
+            var resultString = `<div style="margin-top:4px;margin-bottom:6px;background:rgb(248, 248, 248);border-radius:12px;padding:10px;">${i} vs. <b>${survRes.hp} HP / `
+            if(survRes.def != undefined) {
+                resultString += `${survRes.def} Def</b> < ${hpRem}%:<br>`
+            } else {
+                resultString += `${survRes.spd} SpD</b> < ${hpRem}%:<br>`
+            }
+            resultString += `&nbsp;&nbsp;&nbsp;&nbsp;${(closestTry == true)?`Impossible - Closest Try: `:''}${(survRes.per * 100).toFixed(2)}% (<span style="font-weight:bold;color:${(closestTry == true)?'red':'green'};">${(100 - (survRes.per * 100).toFixed(2)).toFixed(2)}% remaining${noInvest == true ? ' without investment':''}</span>)</div>`
+            $('#surv_calc_results').append(resultString)
+        }
+    },100);
 }
 
 function exportPokemon(playerNum) {
