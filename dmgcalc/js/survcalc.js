@@ -18,6 +18,10 @@ function survCalc(attacker, defender, field, maxPer, move = null, forceEV = {}) 
     })
   }
   const gen8 = calc.Generations.get(8);
+
+  const attackerBoosts = Object.assign({}, attacker.boosts)
+  const defenderBoosts = Object.assign({}, defender.boosts)
+
   for (let defenderMoveIndex = 0; defenderMoveIndex < 4; defenderMoveIndex++) {
     let defenderMoveObj = defMoves[defenderMoveIndex]
     const move = defenderMoveObj.name
@@ -40,6 +44,8 @@ function survCalc(attacker, defender, field, maxPer, move = null, forceEV = {}) 
     if (isPhys) {
       for (let hp = forceHP; hp <= 252; hp += 4) {
         for (let def = forceDef; def <= 252; def += 4) {
+          attacker.boosts = Object.assign({}, attackerBoosts)
+          defender.boosts = Object.assign({}, defenderBoosts)
           attacker.evs = { hp, at: 0, df: def, sa: 0, sd: forceSpD, sp: 0 };
           if(parseInt(attacker.evs.hp) + parseInt(attacker.evs.at) + parseInt(attacker.evs.df) + parseInt(attacker.evs.sa) + parseInt(attacker.evs.sd) + parseInt(attacker.evs.sp) > 510)
             continue
@@ -80,6 +86,8 @@ function survCalc(attacker, defender, field, maxPer, move = null, forceEV = {}) 
     } else {
       for (let hp = forceHP; hp <= 252; hp += 4) {
         for (let spd = forceSpD; spd <= 252; spd += 4) {
+          attacker.boosts = Object.assign({}, attackerBoosts)
+          defender.boosts = Object.assign({}, defenderBoosts)
           attacker.evs = { hp, at: 0, df: forceDef, sa: 0, sd: spd, sp: 0 };
           if(parseInt(attacker.evs.hp) + parseInt(attacker.evs.at) + parseInt(attacker.evs.df) + parseInt(attacker.evs.sa) + parseInt(attacker.evs.sd) + parseInt(attacker.evs.sp) > 510)
             continue
