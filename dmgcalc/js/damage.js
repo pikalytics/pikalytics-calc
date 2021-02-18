@@ -30,10 +30,10 @@ function CALCULATE_ALL_MOVES_SM(p1, p2, field) {
     checkSeeds(p2, field)
     p1.stats[DF] = getModifiedStat(p1.rawStats[DF], p1.boosts[DF])
     p1.stats[SD] = getModifiedStat(p1.rawStats[SD], p1.boosts[SD])
-    p1.stats[SP] = getFinalSpeedSM(p1, field.getWeather(), field.getTerrain())
+    p1.stats[SP] = getFinalSpeedSM(p1, field.getWeather(), field.getTerrain(), field.getSide(0))
     p2.stats[DF] = getModifiedStat(p2.rawStats[DF], p2.boosts[DF])
     p2.stats[SD] = getModifiedStat(p2.rawStats[SD], p2.boosts[SD])
-    p2.stats[SP] = getFinalSpeedSM(p2, field.getWeather(), field.getTerrain())
+    p2.stats[SP] = getFinalSpeedSM(p2, field.getWeather(), field.getTerrain(), field.getSide(1))
     checkIntimidate(p1, p2)
     checkIntimidate(p2, p1)
     p1.stats[AT] = getModifiedStat(p1.rawStats[AT], p1.boosts[AT])
@@ -264,7 +264,7 @@ function getModifiedStat(stat, mod) {
         : stat
 }
 
-function getFinalSpeedSM(pokemon, weather, terrain) {
+function getFinalSpeedSM(pokemon, weather, terrain, side) {
     var speed = getModifiedStat(pokemon.rawStats[SP], pokemon.boosts[SP])
     var otherSpeedMods = 1
     if (pokemon.item === 'Choice Scarf') {
@@ -287,6 +287,9 @@ function getFinalSpeedSM(pokemon, weather, terrain) {
         (pokemon.ability === 'Unburden' && pokemon.item === '') ||
         (pokemon.name === 'Ditto' && pokemon.item === 'Quick Powder')
     ) {
+        otherSpeedMods *= 2
+    }
+    if(side.isTailwind) {
         otherSpeedMods *= 2
     }
     speed = pokeRound(speed * otherSpeedMods)
@@ -386,6 +389,7 @@ function checkInfiltrator(attacker, affectedSide) {
     if (attacker.ability === 'Infiltrator') {
         affectedSide.isReflect = false
         affectedSide.isLightScreen = false
+        affectedSide.isAuroraVeil = false
     }
 }
 
