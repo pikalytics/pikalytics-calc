@@ -8,8 +8,8 @@
 #surv_button_loader {
   display: inline-block;
   position: relative;
-  top:-8px;
-  left:-8px;
+  top: -8px;
+  left: -8px;
 }
 #surv_button_loader div {
   box-sizing: border-box;
@@ -38,4 +38,7 @@
   100% {
     transform: rotate(360deg);
   }
+}
+.move-wrapper cell {
+  padding-left: 5px;
 }
