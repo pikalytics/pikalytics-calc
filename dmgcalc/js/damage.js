@@ -25,8 +25,6 @@ function CALCULATE_ALL_MOVES_SM(p1, p2, field) {
     checkForecast(p2, field.getWeather())
     checkKlutz(p1)
     checkKlutz(p2)
-    checkWeaknessPolicy(p1)
-    checkWeaknessPolicy(p2)
     checkEvo(p1, p2)
     checkSeeds(p1, field)
     checkSeeds(p2, field)
@@ -340,12 +338,6 @@ function checkSeeds(pokemon, field) {
     }
 }
 
-function checkWeaknessPolicy(pokemon) {
-    if (pokemon.item === 'Weakness Policy') {
-        pokemon.boosts[SA] = Math.min(6, pokemon.boosts[SA] + 2)
-        pokemon.boosts[AT] = Math.min(6, pokemon.boosts[AT] + 2)
-    }
-}
 function checkIntimidate(source, target) {
     if (source.ability === 'Intimidate') {
         if (target.ability === 'Contrary' || target.ability === 'Defiant') {

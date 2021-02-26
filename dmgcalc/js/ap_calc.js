@@ -278,10 +278,20 @@ function autosetWeather(ability, i) {
 
 $('#p1 .item').bind('keyup change', function () {
     autosetStatus('#p1', $(this).val())
+    autosetWeaknessPolicy('#p1', $(this).val())
+
 })
 $('#p2 .item').bind('keyup change', function () {
     autosetStatus('#p2', $(this).val())
+    autosetWeaknessPolicy('#p2', $(this).val())
 })
+
+function autosetWeaknessPolicy(p, item) {
+    if(item == 'Weakness Policy') {
+        $(p).find('.sa .boost').val('2')
+        $(p).find('.at .boost').val('2')
+    }
+}
 
 var lastManualStatus = { '#p1': 'Healthy', '#p2': 'Healthy' }
 var lastAutoStatus = { '#p1': 'Healthy', '#p2': 'Healthy' }
