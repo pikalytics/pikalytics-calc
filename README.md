@@ -17,7 +17,7 @@ Under the hood calculator logic is running on [@pikalytics/calc](https://github.
 
 If you're developing on a local fork of the @pikalytics/calc or @smogon/calc module, you'll need to change the `production.min.js` and `data/production.min.js` references in [index.html](dmgcalc/index.html) to point to your local dev copies of those files.
 
-The [Pikalytics Setdex](dmgcalc/js/setdex_pikalytics_v10.js) is derived from the [pikalytics-setdex](https://github.com/GriffinLedingham/pikalytics-setdex) generator project, and new Pikalytics Setdexes can be generated via this other repository (contributors would be welcome to generate & pull request OU, Ubers, etc. setdexes based on Smogon usage, by utilizing the pikalytics-setdex tool).
+The [Pikalytics Setdex](dmgcalc/js/setdex_pikalytics_v12.js) is derived from the [pikalytics-setdex](https://github.com/GriffinLedingham/pikalytics-setdex) generator project, and new Pikalytics Setdexes can be generated via this other repository (contributors would be welcome to generate & pull request OU, Ubers, etc. setdexes based on Smogon usage, by utilizing the pikalytics-setdex tool).
 
 Instructions
 ------------
