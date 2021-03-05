@@ -7,9 +7,9 @@ function survCalc(attacker, defender, field, maxPer, move = null, forceEV = {}) 
   let forceDef = 0;
   let forceSpD = 0;
 
-  if(forceEV.hp != undefined) forceHP = forceEV.hp;
-  if(forceEV.def != undefined) forceDef = forceEV.def;
-  if(forceEV.spd != undefined) forceSpD = forceEV.spd;
+  if(forceEV.hp != undefined) forceHP = parseInt(forceEV.hp);
+  if(forceEV.def != undefined) forceDef = parseInt(forceEV.def);
+  if(forceEV.spd != undefined) forceSpD = parseInt(forceEV.spd);
 
   let defMoves = defender.moves
   if(move != null) {

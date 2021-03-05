@@ -147,7 +147,8 @@ var ITEMS_XY = ITEMS_BW.concat([
     'Maranga Berry',
     'Pixie Plate',
     'Roseli Berry',
-    'Safety Goggles'
+    'Safety Goggles',
+    'Weakness Policy'
 ]);
 
 ITEMS_XY.splice(ITEMS_XY.indexOf('BlackGlasses'), 1, 'Black Glasses');
