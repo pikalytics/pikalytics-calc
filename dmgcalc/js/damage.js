@@ -170,7 +170,7 @@ function GET_DAMAGE_SM(attacker, defender, move, field, side1, side2) {
                 spd: attacker.baseStats.sd,
                 spe: attacker.baseStats.sp,
             },
-            types: [attacker.type1, attacker.type],
+            types: [attacker.type1, attacker.type2],
         },
     })
 
@@ -214,7 +214,7 @@ function GET_DAMAGE_SM(attacker, defender, move, field, side1, side2) {
                 spd: defender.baseStats.sd,
                 spe: defender.baseStats.sp,
             },
-            types: [defender.type1, defender.type],
+            types: [defender.type1, defender.type2],
         },
     })
 
