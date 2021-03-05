@@ -278,10 +278,20 @@ function autosetWeather(ability, i) {
 
 $('#p1 .item').bind('keyup change', function () {
     autosetStatus('#p1', $(this).val())
+    autosetWeaknessPolicy('#p1', $(this).val())
+
 })
 $('#p2 .item').bind('keyup change', function () {
     autosetStatus('#p2', $(this).val())
+    autosetWeaknessPolicy('#p2', $(this).val())
 })
+
+function autosetWeaknessPolicy(p, item) {
+    if(item == 'Weakness Policy') {
+        $(p).find('.sa .boost').val('2')
+        $(p).find('.at .boost').val('2')
+    }
+}
 
 var lastManualStatus = { '#p1': 'Healthy', '#p2': 'Healthy' }
 var lastAutoStatus = { '#p1': 'Healthy', '#p2': 'Healthy' }
@@ -1148,6 +1158,10 @@ function Field() {
         $('#lightScreenL').prop('checked'),
         $('#lightScreenR').prop('checked'),
     ]
+    var isAuroraVeil = [
+        $('#auroraVeilL').prop('checked'),
+        $('#auroraVeilR').prop('checked'),
+    ]
     var isForesight = [
         $('#foresightL').prop('checked'),
         $('#foresightR').prop('checked'),
@@ -1168,6 +1182,10 @@ function Field() {
         $('#powerSpotR').prop('checked'),
         $('#powerSpotL').prop('checked'),
     ] // affects attacks against opposite side
+    var isTailwind = [
+        $('#tailwindL').prop('checked'),
+        $('#tailwindR').prop('checked'),
+    ]
 
     this.getFormat = function () {
         return format
@@ -1203,12 +1221,14 @@ function Field() {
             spikes[+!i],
             isReflect[i],
             isLightScreen[i],
+            isAuroraVeil[i],
             isForesight[i],
             isHelpingHand[+!i],
             isFriendGuard[i],
             isBattery[i],
             isProtect[i],
-            isPowerSpot[i]
+            isPowerSpot[i],
+            isTailwind[i]
         )
     }
 }
@@ -1222,12 +1242,14 @@ function Side(
     spikes,
     isReflect,
     isLightScreen,
+    isAuroraVeil,
     isForesight,
     isHelpingHand,
     isFriendGuard,
     isBattery,
     isProtect,
-    isPowerSpot
+    isPowerSpot,
+    isTailwind
 ) {
     this.gameType = format
     this.terrain = terrain
@@ -1237,12 +1259,14 @@ function Side(
     this.spikes = spikes
     this.isReflect = isReflect
     this.isLightScreen = isLightScreen
+    this.isAuroraVeil = isAuroraVeil
     this.isForesight = isForesight
     this.isHelpingHand = isHelpingHand
     this.isFriendGuard = isFriendGuard
     this.isBattery = isBattery
     this.isProtected = isProtect
     this.isPowerSpot = isPowerSpot
+    this.isTailwind = isTailwind
 }
 
 var gen,
@@ -1407,12 +1431,16 @@ function clearField() {
     $('#reflectR').prop('checked', false)
     $('#lightScreenL').prop('checked', false)
     $('#lightScreenR').prop('checked', false)
+    $('#auroraVeilL').prop('checked', false)
+    $('#auroraVeilR').prop('checked', false)
     $('#foresightL').prop('checked', false)
     $('#foresightR').prop('checked', false)
     $('#helpingHandL').prop('checked', false)
     $('#helpingHandR').prop('checked', false)
     $('#friendGuardL').prop('checked', false)
     $('#friendGuardR').prop('checked', false)
+    $('#tailwindL').prop('checked', false)
+    $('#tailwindR').prop('checked', false)
 }
 
 function getSetOptions() {
