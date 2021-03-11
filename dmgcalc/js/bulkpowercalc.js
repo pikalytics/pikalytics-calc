@@ -1,4 +1,4 @@
-function powercalc(attacker, defender, field) {
+function powercalc(attacker, defender, field, realResults) {
   //create dummy ditto
   //give ditto defender ability, type, weight, dynamax
   var dummy = new Pokemon($("#p1"));
@@ -21,8 +21,44 @@ function powercalc(attacker, defender, field) {
   dummy.rawStats = { at: 68, df: 68, sa: 68, sd: 68, sp: 68 };
   dummy.stats = {df: 68, sd: 68, sp: 68, at: 68, sa: 68};
   dummy.toxicCounter = 0;
-  let damageResults = calculateAllMoves(attacker, dummy, field);
-  console.log(damageResults);
+
+  let dummyResults = calculateAllMoves(attacker, dummy, field);
+  let minPower = dummyResults[0][0].damage[0];
+  //dummyresults[p1attacker,p2attacker][move slot].damage[damage roll position]
+  //console.log(minPower);
+
+
+
+  let dumSpecAttack = dummy.moves[0];
+  dumSpecAttack.bp = 999
+  dumSpecAttack.category = "Special"
+  dumSpecAttack.displayName = "Hyper Beam"
+  dumSpecAttack.hasSecondaryEffect = false;
+  dumSpecAttack.hits = 1;
+  dumSpecAttack.isCrit = false;
+  dumSpecAttack.isMax = false;
+  dumSpecAttack.isSpread = false;
+  dumSpecAttack.isZ = false;
+  dumSpecAttack.name = "Hyper Beam";
+  dumSpecAttack.overrides = {basePower: 999, type: "???"};
+  dumSpecAttack.species = "Ditto";
+  dumSpecAttack.type = "???";
+  dumSpecAttack.useMax = false;
+  dumSpecAttack.zp = 999;
+
+  let dumPhysAttack = dummy.moves[1] = dumSpecAttack;
+  dumPhysAttack.category = "Physical";
+  dumPhysAttack.displayName = "Giga Impact";
+  dumPhysAttack.name = "Giga Impact";
+
+
+  console.log(dummy.moves[1]);
+  dummyResults = calculateAllMoves(attacker, dummy, field);
+  console.log(dummyResults);
+
+
+  let defenderbulk = minPower*defender.maxHP/realResults[0][0].damage[0];
+  //console.log(defenderbulk);
 
   //output result
 }
