@@ -657,7 +657,6 @@ function calculateAll(rerender_surv_dd = true) {
     var field = new Field()
     damageResults = calculateAllMoves(p1, p2, field)
     powercalc(p1, p2, field)
-    powercalc(p2, p1, field)
     var result,
         minDamage,
         maxDamage,
