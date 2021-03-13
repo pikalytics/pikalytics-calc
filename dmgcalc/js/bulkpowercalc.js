@@ -83,6 +83,9 @@ function powercalc(p1, p2, field) {
   let p1Powers = getPowers(p1Results, 0);
   let p2Powers = getPowers(p2Results, 1);
 
+  console.log(1, p1Powers);
+  console.log(2, p2Powers);
+
   //TODO render(minPowers);
 
 
@@ -102,8 +105,8 @@ function powercalc(p1, p2, field) {
   p1Bulk = calcBulk(p1, p1Results, 1);
   p2Bulk = calcBulk(p2, p2Results, 0);
 
-  console.log(1, p1.name, p1Bulk);
-  console.log(2, p2.name, p2Bulk);
+  // console.log(1, p1.name, p1Bulk);
+  // console.log(2, p2.name, p2Bulk);
 
   //output result
 }
