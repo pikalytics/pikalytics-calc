@@ -1090,7 +1090,7 @@ function getMoveDetails(moveInfo, isMax, species) {
     var defaultDetails = moves[moveName]
 
     if (moveName == 'Surging Strikes') ~~moveInfo.find('.move-hits').val(3)
-    if (moveName == 'Triple Axel') ~~moveInfo.find('.move-hits').val(3)
+    if (moveName == 'Triple Axel') ~~moveInfo.find('.move-hits').val(Math.min(~~moveInfo.find('.move-hits').val(), 3))
 
     var move = $.extend({}, defaultDetails, {
         name: moveName,
