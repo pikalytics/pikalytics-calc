@@ -23,30 +23,34 @@ function createDummy(pokemon) {
   dummy.stats = {df: 68, sd: 68, sp: 68, at: 68, sa: 68};
   dummy.toxicCounter = 0;
 
-  //set dummy moves 0 and 1 to be hyperbeam and giga impact for p1 bulk calculation
-  let dumSpecAttack = dummy.moves[0];
-  dumSpecAttack.bp = 999
-  dumSpecAttack.category = "Special"
-  dumSpecAttack.displayName = "Hyper Beam"
-  dumSpecAttack.hasSecondaryEffect = false;
-  dumSpecAttack.hits = 1;
-  dumSpecAttack.isCrit = false;
-  dumSpecAttack.isMax = false;
-  dumSpecAttack.isSpread = false;
-  dumSpecAttack.isZ = false;
-  dumSpecAttack.name = "Hyper Beam";
-  dumSpecAttack.overrides = {basePower: 999, type: "???"};
-  dumSpecAttack.species = "Ditto";
-  dumSpecAttack.type = "???";
-  dumSpecAttack.useMax = false;
-  dumSpecAttack.zp = 999;
-
-  let dumPhysAttack = dummy.moves[1] = {...dumSpecAttack};
-  dumPhysAttack.category = "Physical";
-  dumPhysAttack.displayName = "Giga Impact";
-  dumPhysAttack.name = "Giga Impact";
-
   return dummy;
+}
+
+function setDummyMoves(dummy) {
+    //set dummy moves 0 and 1 to be hyperhyperbeam and gigagiga impact for p1 bulk calculation
+    let dumSpecAttack = dummy.moves[0];
+    dumSpecAttack.bp = 999
+    dumSpecAttack.category = "Special"
+    dumSpecAttack.displayName = "Hyper Beam"
+    dumSpecAttack.hasSecondaryEffect = false;
+    dumSpecAttack.hits = 1;
+    dumSpecAttack.isCrit = false;
+    dumSpecAttack.isMax = false;
+    dumSpecAttack.isSpread = false;
+    dumSpecAttack.isZ = false;
+    dumSpecAttack.name = "Hyper Beam";
+    dumSpecAttack.overrides = {basePower: 999, type: "???"};
+    dumSpecAttack.species = "Ditto";
+    dumSpecAttack.type = "???";
+    dumSpecAttack.useMax = false;
+    dumSpecAttack.zp = 999;
+  
+    let dumPhysAttack = dummy.moves[1] = {...dumSpecAttack};
+    dumPhysAttack.category = "Physical";
+    dumPhysAttack.displayName = "Giga Impact";
+    dumPhysAttack.name = "Giga Impact";
+
+    return dummy;
 }
 
 
@@ -61,20 +65,41 @@ function getPowers(results, side) {
 
 //due to field effects, use opposite side position in results to get relevant damage
 function calcBulk(pokemon, results, oppside) {
-  let SpDamage = results[oppside][0].damage[0];
-  let PhysDamage = results[oppside][1].damage[0];
+  let spDamage = results[oppside][0].damage[0];
+  let physDamage = results[oppside][1].damage[0];
 
   //dummy attack damage vs standard ditto min roll = 374 (scales bulk to equal power)
-  let spBulk = Math.round(374*pokemon.maxHP/SpDamage);
-  let physBulk = Math.round(374*pokemon.maxHP/PhysDamage);
+  let spBulk = Math.round(374*pokemon.maxHP/spDamage);
+  let physBulk = Math.round(374*pokemon.maxHP/physDamage);
   return [physBulk, spBulk];
+}
+
+function renderPowers(p1Powers, p2Powers) {
+  var resultLocations = [[], []]
+  for (var i = 0; i < 4; i++) {
+      resultLocations[0].push('#resultPowerL' + (i + 1));
+      resultLocations[1].push('#resultPowerR' + (i + 1));
+  }
+
+  for (move in resultLocations[0]) {
+    $(resultLocations[0][move]).text(p1Powers[move]);
+  }
+  for (move in resultLocations[1]) {
+    $(resultLocations[1][move]).text(p2Powers[move]);
+  }
+}
+
+function renderBulk(p1Bulk, p2Bulk) {
+  $("#p1 .phyBulk").text(p1Bulk[0]);
+  $("#p1 .spBulk").text(p1Bulk[1]);
+  $("#p2 .phyBulk").text(p2Bulk[0]);
+  $("#p2 .spBulk").text(p2Bulk[1]);
 }
 
 function powercalc(p1, p2, field) {
   //create dummy versions of p1 and p2
   let p1Dummy = createDummy(p1);
   let p2Dummy = createDummy(p2);
-  //console.log(dummy);
   //calc and set aside move powers here
   //field effects are sided so need to calculate both directions
   let p1Results = calculateAllMoves(p1, p2Dummy, field);
@@ -82,18 +107,16 @@ function powercalc(p1, p2, field) {
   
   let p1Powers = getPowers(p1Results, 0);
   let p2Powers = getPowers(p2Results, 1);
-
-  console.log(1, p1Powers);
-  console.log(2, p2Powers);
-
-  //TODO render(minPowers);
-
+  renderPowers(p1Powers, p2Powers);
 
   //set dummy status to healthy and non dynamax for accurate bulk calc
   p1Dummy.status = "Healthy";
   p1Dummy.isDynamax = false;
   p2Dummy.status = "Healthy";
   p2Dummy.isDynamax = false;
+  //custom moves don't play nice with dynamax so remove dummy dynamax before setting moves for bulk calc
+  p1Dummy = setDummyMoves(p1Dummy);
+  p2Dummy = setDummyMoves(p2Dummy);
   
   //PROBLEM: helping hand affects bulk calculation
   //field is not an editable object, constructor gets from html state
@@ -102,18 +125,7 @@ function powercalc(p1, p2, field) {
   p1Results = calculateAllMoves(p1, p2Dummy, field);
   p2Results = calculateAllMoves(p1Dummy, p2, field);
 
-  p1Bulk = calcBulk(p1, p1Results, 1);
-  p2Bulk = calcBulk(p2, p2Results, 0);
-
-  // console.log(1, p1.name, p1Bulk);
-  // console.log(2, p2.name, p2Bulk);
-
-  //output result
+  let p1Bulk = calcBulk(p1, p1Results, 1);
+  let p2Bulk = calcBulk(p2, p2Results, 0);
+  renderBulk(p1Bulk, p2Bulk);
 }
-
-/*
-TODO
--field effects on p1 side apply to both pokemon (screens)
--weird miscalculation of bulk on pokemon change
-
-*/
