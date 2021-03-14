@@ -1,7 +1,7 @@
 function createDummy(pokemon) {
   //create new pokemon based on p1
   var dummy = new Pokemon($("#p1"));
-  //give it the desired pokemon ability, type, weight, dynamax
+  //give it the desired pokemon ability, type, weight, dynamax, speed
   dummy.ability = pokemon.ability;
   dummy.isDynamax = pokemon.isDynamax;
   dummy.type1 = pokemon.type1;
