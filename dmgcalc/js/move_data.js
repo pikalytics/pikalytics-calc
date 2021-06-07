@@ -3506,7 +3506,23 @@ var MOVES_SS = $.extend(true, {}, MOVES_SM, {
         type: 'Water',
         bp: 110,
         category: 'Special'
-    }
+    },
+
+    'Blast Burn': {
+        type: 'Fire',
+        bp: 150,
+        category: 'Special'
+    },
+    'Frenzy Plant': {
+        type: 'Grass',
+        bp: 150,
+        category: 'Special'
+    },
+    'Hydro Cannon': {
+        type: 'Water',
+        bp: 150,
+        category: 'Special'
+    },
 })
 
 var MAXMOVES_LOOKUP = {
