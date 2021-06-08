@@ -1852,6 +1852,8 @@ function checkWeatherBall(moveName, moveInfo, pokeInfo, field) {
 
     if(moveType != 'Normal') {
         moveInfo.find('.move-bp').val(100)
+    } else {
+        moveInfo.find('.move-bp').val(50)
     }
     moveInfo.find('.move-type').val(moveType)
 }
