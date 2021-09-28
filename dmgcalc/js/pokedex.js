@@ -13272,7 +13272,7 @@ var POKEDEX_SS = $.extend(true, {}, POKEDEX_SM, {
         w: 4,
         ab: 'Technician',
     },
-    Clobbopus: {
+    Grapploct: {
         t1: 'Fighting',
         bs: {
             hp: 80,
