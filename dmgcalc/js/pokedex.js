@@ -9082,9 +9082,9 @@ var POKEDEX_XY = $.extend(true, {}, POKEDEX_BW, {
         bs: {
             hp: 60,
             at: 50,
-            df: 150,
+            df: 140,
             sa: 50,
-            sd: 150,
+            sd: 140,
             sp: 60,
         },
         w: 53.0,
@@ -9096,9 +9096,9 @@ var POKEDEX_XY = $.extend(true, {}, POKEDEX_BW, {
         t2: 'Ghost',
         bs: {
             hp: 60,
-            at: 150,
+            at: 140,
             df: 50,
-            sa: 150,
+            sa: 140,
             sd: 50,
             sp: 60,
         },
@@ -9111,14 +9111,13 @@ var POKEDEX_XY = $.extend(true, {}, POKEDEX_BW, {
         bs: {
             hp: 60,
             at: 50,
-            df: 150,
+            df: 140,
             sa: 50,
-            sd: 150,
+            sd: 140,
             sp: 60,
         },
         w: 53.0,
         ab: 'Stance Change',
-        isAlternateForme: true,
     },
     Amaura: {
         t1: 'Rock',
@@ -13273,7 +13272,7 @@ var POKEDEX_SS = $.extend(true, {}, POKEDEX_SM, {
         w: 4,
         ab: 'Technician',
     },
-    Clobbopus: {
+    Grapploct: {
         t1: 'Fighting',
         bs: {
             hp: 80,
@@ -14376,6 +14375,7 @@ var POKEDEX_SS = $.extend(true, {}, POKEDEX_SM, {
     },
     Aegislash: { bs: { def: 140, sd: 140 } },
     'Aegislash-Blade': { bs: { atk: 140, sa: 140 } },
+    'Aegislash-Shield': { bs: { def: 140, sd: 140 } },
 
     Venusaur: { formes: ['Venusaur'] },
     Charizard: { formes: ['Charizard'] },
