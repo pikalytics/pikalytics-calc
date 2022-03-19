@@ -87,6 +87,7 @@
                 <a href="/team" class="team-button" style="position: relative;"
                     >team builder</a
                 >
+                <a href="/top-pokemon" class="meta-button" style="position:relative;">meta report</a>
                 <a href="/calc" class="calc-button top-selected">Damage calc</a>
                 <a
                     href="/articles"
@@ -150,6 +151,14 @@
                         ></span
                     ></a
                 >
+                <a class="color_scheme_button" onclick="localStorage.setItem('dark-mode',(localStorage.getItem('dark-mode') == '1'?'0':'1'));window.location.reload();">
+                    <span class="color-scheme-slide-wrapper">
+                        <span class="color-scheme-slider">
+                            <img src="https://cdn.pikalytics.com/images/moon.png" class="moon-icon color-slider-icon" />
+                    <img src="https://cdn.pikalytics.com/images/sun.png" class="sun-icon color-slider-icon" />
+                        </span>
+                    </span>
+                </a>
             </div>
         </div>
         <span
@@ -2835,11 +2844,11 @@
             ></script>
             <script
                 type="text/javascript"
-                src="/dmgcalc/js/setdex_pikalytics_v12.js"
+                src="/dmgcalc/js/setdex_pikalytics_v20.js"
             ></script>
             <script
                 type="text/javascript"
-                src="/dmgcalc/js/setdex_pikalytics_ou_v2.js"
+                src="/dmgcalc/js/setdex_pikalytics_ou_v4.js"
             ></script>
             <script
                 type="text/javascript"
@@ -2899,7 +2908,7 @@
                 &nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://pikalytics.flycricket.io/privacy.html" target="_blank">Privacy Policy</a>
                 &nbsp;&nbsp;<span data-ccpa-link="1"></span>
                 <div style="margin-bottom:100px;">
-                    <span style="cursor:pointer;" onclick="localStorage.setItem('dark-mode','1');window.location.reload();"><i class="fa fa-moon-o" aria-hidden="true"></i>&nbsp;&nbsp;Dark Mode [BETA]</span> | <span style="cursor:pointer;" onclick="localStorage.setItem('dark-mode','0');window.location.reload();"><i class="fa fa-sun-o" aria-hidden="true"></i>&nbsp;&nbsp;Light Mode</span>
+                    <span style="cursor:pointer;" onclick="localStorage.setItem('dark-mode','1');window.location.reload();"><i class="fa fa-moon-o" aria-hidden="true"></i>&nbsp;&nbsp;Dark Mode</span> | <span style="cursor:pointer;" onclick="localStorage.setItem('dark-mode','0');window.location.reload();"><i class="fa fa-sun-o" aria-hidden="true"></i>&nbsp;&nbsp;Light Mode</span>
                 </div>
             </div>
 

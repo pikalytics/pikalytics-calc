@@ -652,9 +652,9 @@ for (var i = 0; i < 4; i++) {
 
 var damageResults
 function calculateAll(rerender_surv_dd = true) {
-    var p1 = new Pokemon($('#p1'))
-    var p2 = new Pokemon($('#p2'))
     var field = new Field()
+    var p1 = new Pokemon($('#p1'), field)
+    var p2 = new Pokemon($('#p2'), field)
     damageResults = calculateAllMoves(p1, p2, field)
     powercalc(p1, p2, field)
     var result,
@@ -848,9 +848,9 @@ function survCalcButton() {
 
     $('#surv_calc_results').html(``);
     setTimeout(() => {
-        const p1 = new Pokemon($('#p1'))
-        const p2 = new Pokemon($('#p2'))
         const field = new Field()
+        const p1 = new Pokemon($('#p1'), field)
+        const p2 = new Pokemon($('#p2'), field)
 
         this.lastSurv = p1.name + p2.name
 
@@ -897,7 +897,6 @@ function exportPokemon(playerNum) {
     var pokemon = new Pokemon($('#p' + playerNum))
     let set = ''
     set += pokemon.name
-    console.log(pokemon)
     if (pokemon.item != '') set += ' @ ' + pokemon.item + '\n'
     else set += '\n'
     if (pokemon.ability != '') set += 'Ability: ' + pokemon.ability + '\n'
@@ -1015,7 +1014,7 @@ function findDamageResult(resultMoveObj) {
     }
 }
 
-function Pokemon(pokeInfo) {
+function Pokemon(pokeInfo, field) {
     var setName = pokeInfo.find('input.set-selector').val()
     if (setName.indexOf('(') === -1) {
         this.name = setName
@@ -1063,34 +1062,41 @@ function Pokemon(pokeInfo) {
             : 0
     this.moves = [
         getMoveDetails(
+            pokeInfo,
             pokeInfo.find('.move1'),
             pokeInfo.find('.max').prop('checked'),
-            this.name
+            this.name,
+            field
         ),
         getMoveDetails(
+            pokeInfo,
             pokeInfo.find('.move2'),
             pokeInfo.find('.max').prop('checked'),
-            this.name
+            this.name,
+            field
         ),
         getMoveDetails(
+            pokeInfo,
             pokeInfo.find('.move3'),
             pokeInfo.find('.max').prop('checked'),
-            this.name
+            this.name,
+            field
         ),
         getMoveDetails(
+            pokeInfo,
             pokeInfo.find('.move4'),
             pokeInfo.find('.max').prop('checked'),
-            this.name
+            this.name,
+            field
         ),
     ]
     this.weight = +pokeInfo.find('.weight').val()
 }
 
-function getMoveDetails(moveInfo, isMax, species) {
+// field is undefined when exporting a Pokemon, that's fine, it's for UI purposes
+function getMoveDetails(pokeInfo, moveInfo, isMax, species, field) {
     var moveName = moveInfo.find('select.move-selector').val()
     var defaultDetails = moves[moveName]
-
-    if (moveName == 'Surging Strikes') ~~moveInfo.find('.move-hits').val(3)
 
     var move = $.extend({}, defaultDetails, {
         name: moveName,
@@ -1118,6 +1124,9 @@ function getMoveDetails(moveInfo, isMax, species) {
     var gen8 = calc.Generations.get(8)
     var calcMove = new calc.Move(gen8, move.name, move)
     if (calcMove != null) move.displayName = calcMove.name
+
+    // UI update checks to happen after blocking JS
+    checkMoveUICases(moveName, moveInfo, pokeInfo, field)
 
     return move
 }
@@ -1790,4 +1799,70 @@ function getPikalyticsSet() {
 
     localStorage.removeItem('damageCalcAtt')
     calculateAll()
+}
+
+function checkMoveUICases(moveName, moveInfo, pokeInfo, field) {
+    setTimeout(() => {
+        checkSurgingStrikes(moveName, moveInfo)
+        checkTripleAxel(moveName, moveInfo)
+        checkElectroBall(moveName, moveInfo, pokeInfo)
+        checkWeatherBall(moveName, moveInfo, pokeInfo, field)
+    }, 0)
+}
+
+function checkElectroBall(moveName, moveInfo, pokeInfo) {
+    if (moveName != 'Electro Ball') return
+    let r
+    if(pokeInfo.selector == '#p1') {
+        r = Math.floor( parseInt($('#p1_speed_calc').text())/ parseInt($('#p2_speed_calc').text()));
+    } else {
+        r = Math.floor( parseInt($('#p2_speed_calc').text())/ parseInt($('#p1_speed_calc').text()));
+    }
+    basePower = r >= 4 ? 150 : r >= 3 ? 120 : r >= 2 ? 80 : r >= 1 ? 60 : 40
+    moveInfo.find('.move-bp').val(basePower)
+}
+
+function checkWeatherBall(moveName, moveInfo, pokeInfo, field) {
+    if (moveName != 'Weather Ball') return
+    if (field === undefined) return
+    let moveType
+    const weather = field.getWeather()
+    switch(weather) {
+        case 'Hail':
+            moveType = 'Ice'
+            break;
+        case 'Sand':
+            moveType = 'Rock'
+            break;
+        case 'Rain':
+            moveType = 'Water'
+            break;
+        case 'Heavy Rain':
+            moveType = 'Water'
+            break;
+        case 'Sun':
+            moveType = 'Fire'
+            break;
+        case 'Harsh Sunshine':
+            moveType = 'Fire'
+            break;
+        default:
+            moveType = 'Normal'
+            break;
+    }
+
+    if(moveType != 'Normal') {
+        moveInfo.find('.move-bp').val(100)
+    } else {
+        moveInfo.find('.move-bp').val(50)
+    }
+    moveInfo.find('.move-type').val(moveType)
+}
+
+function checkSurgingStrikes(moveName, moveInfo) {
+    if (moveName == 'Surging Strikes') ~~moveInfo.find('.move-hits').val(3)
+}
+
+function checkTripleAxel(moveName, moveInfo) {
+    if (moveName == 'Triple Axel') ~~moveInfo.find('.move-hits').val(Math.min(~~moveInfo.find('.move-hits').val(), 3))
 }
