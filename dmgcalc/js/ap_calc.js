@@ -1643,6 +1643,7 @@ $('.result-move').change(function () {
                     '</span>'
             )
             $('#mainResultDamage').html(result.damageText)
+            //$('#mainResultPower').html(result.powerText)
             $('#mainResultKO').html(result.koChanceText)
             $('#damageValues').text('(' + result.damage.join(', ') + ')')
         }
