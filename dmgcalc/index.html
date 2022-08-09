@@ -2004,6 +2004,30 @@
                         <div class="btn-group gen-specific g5 g6 g7 g8">
                             <div
                                 class="left"
+                                title="Export set to Pikalytics Calc link."
+                            >
+                                <span
+                                    class="btn btn-xxwide"
+                                    for="exportSetL"
+                                    onclick="exportPokemonLink(1);"
+                                    >Export Set Link</span
+                                >
+                            </div>
+                            <div
+                                class="right"
+                                title="Export set to Pikalytics Calc link."
+                            >
+                                <span
+                                    class="btn btn-xxwide"
+                                    for="exportSetL"
+                                    onclick="exportPokemonLink(2);"
+                                    >Export Set Link</span
+                                >
+                            </div>
+                        </div>
+                        <div class="btn-group gen-specific g5 g6 g7 g8">
+                            <div
+                                class="left"
                                 title="Export set to Showdown paste."
                             >
                                 <span
@@ -2830,6 +2854,9 @@
                     <span style="cursor:pointer;" onclick="localStorage.setItem('dark-mode','1');window.location.reload();"><i class="fa fa-moon-o" aria-hidden="true"></i>&nbsp;&nbsp;Dark Mode</span> | <span style="cursor:pointer;" onclick="localStorage.setItem('dark-mode','0');window.location.reload();"><i class="fa fa-sun-o" aria-hidden="true"></i>&nbsp;&nbsp;Light Mode</span>
                 </div>
             </div>
+            <br><br>
+            <br><br>
+                <div id="video"></div>
 
             <script>
             $('.btc_addr').click(function () {
