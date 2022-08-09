@@ -551,17 +551,19 @@ $('.forme').change(function () {
         baseStat.keyup()
     }
 
-    if (abilities.indexOf(altForme.ab) > -1) {
-        container.find('.ability').val(altForme.ab)
-    } else if (
-        setName !== 'Blank Set' &&
-        abilities.indexOf(setdex[pokemonName][setName].ability) > -1
-    ) {
-        container.find('.ability').val(setdex[pokemonName][setName].ability)
-    } else {
-        container.find('.ability').val('')
-    }
-    container.find('.ability').keyup()
+    try {
+        if (abilities.indexOf(altForme.ab) > -1) {
+            container.find('.ability').val(altForme.ab)
+        } else if (
+            setName !== 'Blank Set' &&
+            abilities.indexOf(setdex[pokemonName][setName].ability) > -1
+        ) {
+            container.find('.ability').val(setdex[pokemonName][setName].ability)
+        } else {
+            container.find('.ability').val('')
+        }
+        container.find('.ability').keyup()
+    } catch(e){}
 
     if (
         $(this).val().indexOf('Mega') === 0 &&
