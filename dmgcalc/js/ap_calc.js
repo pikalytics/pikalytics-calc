@@ -1577,13 +1577,14 @@ $(document).ready(function () {
     $('.set-selector').val(getSetOptions()[gen > 3 ? 1 : gen === 1 ? 5 : 3].id)
     $('.set-selector').change()
 
+    getPikalyticsSet()
+    
     if(window.location.href.indexOf('?attSet=') != -1) {
-        return getQueryParamSet('attSet','#p1')
+        getQueryParamSet('attSet','#p1')
     }
     if(window.location.href.indexOf('?defSet=') != -1) {
-        return getQueryParamSet('defSet','#p2')
+        getQueryParamSet('defSet','#p2')
     }
-    return getPikalyticsSet()
 })
 
 /*
