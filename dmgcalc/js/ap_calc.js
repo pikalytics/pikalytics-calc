@@ -1577,7 +1577,13 @@ $(document).ready(function () {
     $('.set-selector').val(getSetOptions()[gen > 3 ? 1 : gen === 1 ? 5 : 3].id)
     $('.set-selector').change()
 
-    getPikalyticsSet()
+    if(window.location.href.indexOf('?attSet=') != -1) {
+        return getQueryParamSet('attSet','#p1')
+    }
+    if(window.location.href.indexOf('?defSet=') != -1) {
+        return getQueryParamSet('defSet','#p2')
+    }
+    return getPikalyticsSet()
 })
 
 /*
@@ -1650,22 +1656,35 @@ $('.result-move').change(function () {
 
 var last_poke = ''
 function getPikalyticsSet() {
-    var pokemonName, setName
     var lsResult = JSON.parse(localStorage.getItem('damageCalcAtt'))
-    if (lsResult != false && lsResult != null) {
-        pokemonName = lsResult.name
+    getSetFromPikalyticsStructure(lsResult, '#p1', '(Pikalytics Team Builder)')
+}
+
+function getQueryParamSet(key,player) {
+    var url = new URL(window.location.href);
+    var set = url.searchParams.get(key)
+    if (set) {
+        console.log(window.atob(window.decodeURI(set)))
+        getSetFromPikalyticsStructure(JSON.parse(window.atob(window.decodeURI(set))), player, '(Imported from link)')
+    }
+}
+
+function getSetFromPikalyticsStructure(inputSet, player, sourceType) {
+    var pokemonName, setName
+    if (inputSet != false && inputSet != null) {
+        pokemonName = inputSet.name
         for (var i = 0; i < showdownFormes.length; ++i) {
             if (pokemonName == showdownFormes[i][0])
                 pokemonName = showdownFormes[i][1]
         }
         var pokemon = pokedex[pokemonName]
         if (pokemon) {
-            var pokeObj = $('#p1')
-            $('#p1 .select2-chosen').text(
-                pokemonName + ' (Pikalytics Team Builder)'
+            var pokeObj = $(player)
+            $(player + ' .select2-chosen').text(
+                pokemonName + ' ' + sourceType
             )
-            $('#p1 .set-selector').val(
-                pokemonName + ' (Pikalytics Team Builder)'
+            $(player + ' .set-selector').val(
+                pokemonName + ' ' + sourceType
             )
             pokeObj.find('.type1').val(pokemon.t1)
             pokeObj.find('.type2').val(pokemon.t2)
@@ -1685,8 +1704,8 @@ function getPikalyticsSet() {
             var abilityObj = pokeObj.find('.ability')
             var itemObj = pokeObj.find('.item')
             var formeObj = pokeObj.find('.forme')
-            if (typeof lsResult.set != 'undefined') {
-                var set = lsResult.set
+            if (typeof inputSet.set != 'undefined') {
+                var set = inputSet.set
                 pokeObj.find('.level').val(set.level)
                 pokeObj
                     .find('.hp .evs')
@@ -1787,7 +1806,7 @@ function getPikalyticsSet() {
             setSelectValueIfValid(formeObj, pokemonName, '')
             formeObj.change()
 
-            $('#p1 .move-hits').remove()
+            $(player + ' .move-hits').remove()
 
             var poke_ga_string = pokemonName
             if (last_poke != poke_ga_string) {
