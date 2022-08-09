@@ -894,6 +894,42 @@ function survCalcButton() {
     },100);
 }
 
+function exportPokemonLink(playerNum) {
+    var pokemon = new Pokemon($('#p' + playerNum))
+    var url = window.location.origin + window.location.pathname
+    if(playerNum == 1) {
+        url += '?attSet='
+    }
+    else {
+        url += '?defSet='
+    }
+    var set = {
+        "name": pokemon.name,
+        "set": {
+          "ability": pokemon.ability,
+          "evs": {
+            "at": pokemon.evs.at,
+            "df": pokemon.evs.df,
+            "hp": pokemon.evs.hp,
+            "sa": pokemon.evs.sa,
+            "sd": pokemon.evs.sd,
+            "sp": pokemon.evs.sp
+          },
+          "item": pokemon.item,
+          "level": pokemon.level,
+          "moves": [],
+          "ivs": { "atk": pokemon.ivs.at, "def": pokemon.ivs.df, "hp": pokemon.ivs.hp, "spa": pokemon.ivs.sa, "spd": pokemon.ivs.sd, "spe": pokemon.ivs.sp },
+          "nature": pokemon.nature
+        }
+      }
+    for (let i in pokemon.moves) {
+        if (pokemon.moves[i].name == '(No Move)') continue
+        set.set.moves.push(pokemon.moves[i].name)
+    }
+    url += window.encodeURI(window.btoa(JSON.stringify(set)))
+    console.log(url)
+}
+
 function exportPokemon(playerNum) {
     var pokemon = new Pokemon($('#p' + playerNum))
     let set = ''
@@ -1580,7 +1616,7 @@ $(document).ready(function () {
     $('.set-selector').change()
 
     getPikalyticsSet()
-    
+
     if(window.location.href.indexOf('?attSet=') != -1) {
         getQueryParamSet('attSet','#p1')
     }
@@ -1740,18 +1776,25 @@ function getSetFromPikalyticsStructure(inputSet, player, sourceType) {
                                 : 0
                         )
                     pokeObj
-                        .find('.' + STATS[i] + ' .ivs')
-                        .val(
-                            set.ivs && typeof set.ivs[STATS[i]] !== 'undefined'
-                                ? set.ivs[STATS[i]]
-                                : 31
-                        )
-                    pokeObj
                         .find('.' + STATS[i] + ' .dvs')
                         .val(
                             set.dvs && typeof set.dvs[STATS[i]] !== 'undefined'
                                 ? set.dvs[STATS[i]]
                                 : 15
+                        )
+                }
+                var IV_STATS = ['atk', 'def', 'spa', 'spd', 'spe']
+                for(i=0;i < IV_STATS.length; i++) {
+                    console.log(set.ivs[IV_STATS[i]])
+                    console.log(typeof set.ivs[IV_STATS[i]])
+                    console.log(pokeObj
+                        .find('.' + STATS[i] + ' .ivs'))
+                    pokeObj
+                        .find('.' + STATS[i] + ' .ivs')
+                        .val(
+                            set.ivs && typeof set.ivs[IV_STATS[i]] !== 'undefined'
+                                ? set.ivs[IV_STATS[i]]
+                                : 31
                         )
                 }
                 setSelectValueIfValid(
