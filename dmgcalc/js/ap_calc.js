@@ -894,15 +894,7 @@ function survCalcButton() {
     },100);
 }
 
-function exportPokemonLink(playerNum) {
-    var pokemon = new Pokemon($('#p' + playerNum))
-    var url = window.location.origin + window.location.pathname
-    if(playerNum == 1) {
-        url += '?attSet='
-    }
-    else {
-        url += '?defSet='
-    }
+function getPokemonExportSet(pokemon) {
     var set = {
         "name": pokemon.name,
         "set": {
@@ -926,7 +918,25 @@ function exportPokemonLink(playerNum) {
         if (pokemon.moves[i].name == '(No Move)') continue
         set.set.moves.push(pokemon.moves[i].name)
     }
-    url += window.encodeURI(window.btoa(JSON.stringify(set)))
+    return set;
+}
+
+function exportPokemonLink(playerNums) {
+    var url = window.location.origin + window.location.pathname
+    for (let i in playerNums) {
+        var playerNum = playerNums[i];
+        var pokemon = new Pokemon($('#p' + playerNum))
+        url += url.indexOf('?') > -1 ? '&' : '?'
+        if(playerNum == 1) {
+            url += 'attSet='
+        }
+        else {
+            url += 'defSet='
+        }
+        set = getPokemonExportSet(pokemon);
+
+        url += window.encodeURI(window.btoa(JSON.stringify(set)))
+    }
 
     // Create an auxiliary hidden input
     var aux = document.createElement('input')
@@ -948,6 +958,12 @@ function exportPokemonLink(playerNum) {
 
     // Remove the input from the body
     document.body.removeChild(aux)
+
+    $('#link_copied_text').css('opacity', 1);
+    setTimeout(() => {
+        $('#link_copied_text').css('opacity', 0);
+    }
+    , 2000);
 }
 
 function exportPokemon(playerNum) {
@@ -1637,10 +1653,10 @@ $(document).ready(function () {
 
     getPikalyticsSet()
 
-    if(window.location.href.indexOf('?attSet=') != -1) {
+    if(window.location.href.indexOf('attSet=') != -1) {
         getQueryParamSet('attSet','#p1')
     }
-    if(window.location.href.indexOf('?defSet=') != -1) {
+    if(window.location.href.indexOf('defSet=') != -1) {
         getQueryParamSet('defSet','#p2')
     }
 })
