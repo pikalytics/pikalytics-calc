@@ -1805,10 +1805,6 @@ function getSetFromPikalyticsStructure(inputSet, player, sourceType) {
                 }
                 var IV_STATS = ['atk', 'def', 'spa', 'spd', 'spe']
                 for(i=0;i < IV_STATS.length; i++) {
-                    console.log(set.ivs[IV_STATS[i]])
-                    console.log(typeof set.ivs[IV_STATS[i]])
-                    console.log(pokeObj
-                        .find('.' + STATS[i] + ' .ivs'))
                     pokeObj
                         .find('.' + STATS[i] + ' .ivs')
                         .val(
