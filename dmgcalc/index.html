@@ -2000,7 +2000,17 @@
                         </div>
 
                         <hr class="gen-specific g2 g3 g4 g5 g6 g7 g8">
-
+                        <div style="opacity: 0;transition: opacity 0.2s;padding-top:0px;padding-bottom:6px;" id="link_copied_text">
+                            Link copied!
+                        </div>
+                        <div class="btn-group gen-specific g5 g6 g7 g8">
+                            <span
+                                    class="btn btn-xxwide"
+                                    for="exportSetFull"
+                                    onclick="exportPokemonLink([1,2]);"
+                                    >Export Full Calc Link
+                            </span>
+                        </div>
                         <div class="btn-group gen-specific g5 g6 g7 g8">
                             <div
                                 class="left"
@@ -2009,7 +2019,7 @@
                                 <span
                                     class="btn btn-xxwide"
                                     for="exportSetL"
-                                    onclick="exportPokemonLink(1);"
+                                    onclick="exportPokemonLink([1]);"
                                     >Export Set Link</span
                                 >
                             </div>
@@ -2020,7 +2030,7 @@
                                 <span
                                     class="btn btn-xxwide"
                                     for="exportSetL"
-                                    onclick="exportPokemonLink(2);"
+                                    onclick="exportPokemonLink([2]);"
                                     >Export Set Link</span
                                 >
                             </div>
@@ -2049,6 +2059,7 @@
                                 >
                             </div>
                         </div>
+                        <br>
                         <br>
                         <br>
                         <textarea rows="9" cols="36" id="customMon" style="font-size: 12px;white-space: pre-wrap;"></textarea>
@@ -2829,7 +2840,7 @@
             <script type="text/javascript" src="/dmgcalc/js/damage.js"></script>
             <script
                 type="text/javascript"
-                src="/dmgcalc/js/ap_calc.js?v=8"
+                src="/dmgcalc/js/ap_calc.js?v=9"
             ></script>
             <script
                 type="text/javascript"
