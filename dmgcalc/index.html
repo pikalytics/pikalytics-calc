@@ -564,6 +564,11 @@
                         <span id="mainResult" style="margin-left: 40px;"
                             >Loading...</span
                         >
+                        <!-- Copy button with copy icon -->
+                        <span id="main-result-copy" style="margin-left:10px;cursor:pointer;" class="copy-button"
+                        onclick="copyToClipboard('mainResult')"
+                            ><i class="fa fa-clipboard" onclick="copyToClipboard('mainResult')"></i
+                        ></span>
                     </div>
                     <div class="small-text">
                         <span id="damageValues" style="margin-left: 40px;"
@@ -2898,6 +2903,28 @@
                     $('#btc_addr').text('3HXA8kSk8cPNce1p232htgMbXLwGgb46bb')
                 }, 5000)
             })
+
+            function copyToClipboard(element) {
+                var aux = document.createElement('input')
+
+                // Get the text from the element passed into the input
+                aux.setAttribute(
+                    'value',
+                    document.getElementById(element).innerHTML
+                )
+
+                // Append the aux input to the body
+                document.body.appendChild(aux)
+
+                // Highlight the content
+                aux.select()
+
+                // Execute the copy command
+                document.execCommand('copy')
+
+                // Remove the input from the body
+                document.body.removeChild(aux)
+            }
 
             </script>
 
