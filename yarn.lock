@@ -550,10 +550,10 @@
     "@jridgewell/resolve-uri" "3.1.0"
     "@jridgewell/sourcemap-codec" "1.4.14"
 
-"@pikalytics/calc@0.8.4":
-  version "0.8.4"
-  resolved "https://registry.yarnpkg.com/@pikalytics/calc/-/calc-0.8.4.tgz#57a910696146c67013cfe2b457585ca642079141"
-  integrity sha512-QnXosQv00DP6ulTxGr1Po1UCbZFKdJUX8nWtrycJwoICF+K787LxkucjHi2vN58AnsfikD3ALC8rzAMyrcdZKA==
+"@pikalytics/calc@0.8.5":
+  version "0.8.5"
+  resolved "https://registry.yarnpkg.com/@pikalytics/calc/-/calc-0.8.5.tgz#40c9bc374cf54155e4d33f01fc9c90d85d6a5c30"
+  integrity sha512-8NKZui2LLCSdi5JwFF1rIWIMGpv0EnOfSJoLvE+KC4Hqs2JaPEpDHeS3G+HEKJ4qzkPSnIZYGEJcgPZdixJw1g==
   dependencies:
     "@types/node" "^18.11.9"
 
