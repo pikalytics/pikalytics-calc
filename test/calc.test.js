@@ -1,6 +1,6 @@
 describe('Calc', () => {
   beforeEach(async () => {
-    await page.goto('http://localhost:5000/dmgcalc')
+    await page.goto('http://localhost:50091/dmgcalc')
   })
 
   it('should calc 160 SpA charmander versus bulbasaur', async () => {

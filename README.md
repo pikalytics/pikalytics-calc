@@ -23,8 +23,8 @@ Instructions
 ------------
 
 - `npm install` to install the `@smogon/calc` and `serve` modules for development
-- `npm run dev` to start up a server on port `5000`
-- Visit http://localhost:5000/dmgcalc in your browser
+- `npm run dev` to start up a server on port `50091`
+- Visit http://localhost:50091/dmgcalc in your browser
 
 Any new CSS should utilize the [pikalytics_calc_styles.css](dmgcalc/pikalytics_calc_styles.css) stylesheet, to override styles when hosted on production Pikalytics.
 
