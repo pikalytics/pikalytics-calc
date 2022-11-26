@@ -1194,8 +1194,8 @@ function getMoveDetails(pokeInfo, moveInfo, isMax, species, field) {
                 : 1,
     })
 
-    var gen8 = calc.Generations.get(8)
-    var calcMove = new calc.Move(gen8, move.name, move)
+    var gen9 = calc.Generations.get(9)
+    var calcMove = new calc.Move(gen9, move.name, move)
     if (calcMove != null) move.displayName = calcMove.name
 
     // UI update checks to happen after blocking JS
@@ -1463,6 +1463,18 @@ $('.gen').change(function () {
             calcHP = CALC_HP_ADV
             calcStat = CALC_STAT_ADV
             break
+        case 9:
+            pokedex = POKEDEX_SS
+            setdex = SETDEX_SS
+            typeChart = TYPE_CHART_XY
+            moves = MOVES_SS
+            items = ITEMS_SS
+            abilities = ABILITIES_SS
+            STATS = STATS_GSC
+            calculateAllMoves = CALCULATE_ALL_MOVES_SM
+            calcHP = CALC_HP_ADV
+            calcStat = CALC_STAT_ADV
+            break
     }
     clearField()
     $('.gen-specific.g' + gen).show()
@@ -1602,8 +1614,8 @@ function getSelectOptions(arr, sort, defaultIdx) {
 }
 
 $(document).ready(function () {
-    $('#gen8').prop('checked', true)
-    $('#gen8').change()
+    $('#gen9').prop('checked', true)
+    $('#gen9').change()
     $('.terrain-trigger').bind('change keyup', getTerrainEffects)
     $('.calc-trigger').bind('change keyup', calculateAll)
     $('.set-selector').select2({

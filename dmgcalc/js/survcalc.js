@@ -17,7 +17,7 @@ function survCalc(attacker, defender, field, maxPer, move = null, forceEV = {}) 
       return m.name == move? {name:m.name}:{name:'(No Move)'}
     })
   }
-  const gen8 = calc.Generations.get(8);
+  const gen9 = calc.Generations.get(9);
 
   const attackerBoosts = Object.assign({}, attacker.boosts)
   const defenderBoosts = Object.assign({}, defender.boosts)
@@ -26,7 +26,7 @@ function survCalc(attacker, defender, field, maxPer, move = null, forceEV = {}) 
     let defenderMoveObj = defMoves[defenderMoveIndex]
     const move = defenderMoveObj.name
     if(move == '(No Move)') continue
-    const moveData = new calc.Move(gen8, defenderMoveObj.name);
+    const moveData = new calc.Move(gen9, defenderMoveObj.name);
 
     const isPhys = moveData.category === "Physical";
 
