@@ -82,7 +82,7 @@ function CALCULATE_ALL_MOVES_SM(p1, p2, field) {
 
 function GET_DAMAGE_SM(attacker, defender, move, field, side1, side2) {
     if(move == undefined) return
-    var gen8 = calc.Generations.get(8)
+    var gen9 = calc.Generations.get(9)
 
     for (var i = 0; i < showdownFormes.length; i++) {
         if (attacker.name == showdownFormes[i][1])
@@ -128,7 +128,7 @@ function GET_DAMAGE_SM(attacker, defender, move, field, side1, side2) {
         defender.name = defender.name.replace('Mega ', '') + '-Mega'
     }
 
-    var p1 = new calc.Pokemon(gen8, attacker.name, {
+    var p1 = new calc.Pokemon(gen9, attacker.name, {
         level: attacker.level,
         item: attacker.item,
         nature: attacker.nature,
@@ -172,7 +172,7 @@ function GET_DAMAGE_SM(attacker, defender, move, field, side1, side2) {
         },
     })
 
-    var p2 = new calc.Pokemon(gen8, defender.name, {
+    var p2 = new calc.Pokemon(gen9, defender.name, {
         level: defender.level,
         item: defender.item,
         nature: defender.nature,
@@ -225,10 +225,10 @@ function GET_DAMAGE_SM(attacker, defender, move, field, side1, side2) {
     move.overrides = { basePower: move.bp, type: move.type }
 
     var result = calc.calculate(
-        gen8,
+        gen9,
         p1,
         p2,
-        new calc.Move(gen8, move.name, move),
+        new calc.Move(gen9, move.name, move),
         new calc.Field(field)
     )
 
