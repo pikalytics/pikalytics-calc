@@ -1845,6 +1845,27 @@ var POKEDEX_RBY = {
     },
     w: 88.4,
     ab: "Intimidate",
+    formes: ["Tauros-Paldea", "Tauros-Paldea-Fire", "Tauros-Paldea-Water"],
+  },
+  "Tauros-Paldea": {
+    t1: "Fighting",
+    bs: { hp: 75, at: 110, df: 105, sa: 30, sd: 70, sp: 100 },
+    w: 88.4,
+    ab: "Intimidate",
+  },
+  "Tauros-Paldea-Fire": {
+    t1: "Fighting",
+    t2: "Fire",
+    bs: { hp: 75, at: 110, df: 105, sa: 30, sd: 70, sp: 100 },
+    w: 88.4,
+    ab: "Intimidate",
+  },
+  "Tauros-Paldea-Water": {
+    t1: "Fighting",
+    t2: "Water",
+    bs: { hp: 75, at: 110, df: 105, sa: 30, sd: 70, sp: 100 },
+    w: 88.4,
+    ab: "Intimidate",
   },
   Tentacool: {
     t1: "Water",
