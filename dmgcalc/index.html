@@ -2816,11 +2816,11 @@
             ></script>
             <script
                 type="text/javascript"
-                src="/dmgcalc/js/setdex_pikalytics_v21.js"
+                src="/dmgcalc/js/setdex_pikalytics_v22.js"
             ></script>
             <script
                 type="text/javascript"
-                src="/dmgcalc/js/setdex_pikalytics_ou_v5.js"
+                src="/dmgcalc/js/setdex_pikalytics_ou_v6.js"
             ></script>
             <script
                 type="text/javascript"
@@ -2871,12 +2871,15 @@
 
             <div id="ccpa" style="margin-bottom: 16px;text-align: center;line-height: 24px;">
                 <a title="Support us on ko-fi.com" href="https://ko-fi.com/pikalytics"  target="_blank"><img src="https://cdn.pikalytics.com/images/cup-border.png" class="kofiimg">Support Us&nbsp;&nbsp;❤️</span></a>
-                &nbsp;&nbsp;|&nbsp;&nbsp;<a class="btc_addr" style="margin-right: 6px;"><i class="fa fa-btc" aria-hidden="true"></i></a><a class="btc_addr" id="btc_addr" target="_blank">3HXA8kSk8cPNce1p232htgMbXLwGgb46bb</a>
+                &nbsp;&nbsp;|&nbsp;&nbsp;<a class="eth_addr" style="margin-right: 6px;"><i class="fa fa-btc" aria-hidden="true"></i></a><a class="eth_addr" id="eth_addr" target="_blank">0x18F24a06c6c9C925235355059c4ca43814dD15C0</a>
                 <br><a href="mailto:pikalytics@gmail.com" target="_blank">Advertise on Pikalytics</a>
                 &nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://pikalytics.flycricket.io/privacy.html" target="_blank">Privacy Policy</a>
                 &nbsp;&nbsp;<span data-ccpa-link="1"></span>
-                <div style="margin-bottom:100px;">
+                <div>
                     <span style="cursor:pointer;" onclick="localStorage.setItem('dark-mode','1');window.location.reload();"><i class="fa fa-moon-o" aria-hidden="true"></i>&nbsp;&nbsp;Dark Mode</span> | <span style="cursor:pointer;" onclick="localStorage.setItem('dark-mode','0');window.location.reload();"><i class="fa fa-sun-o" aria-hidden="true"></i>&nbsp;&nbsp;Light Mode</span>
+                </div>
+                <div style="margin-bottom:100px;">
+                    Pokémon and All Respective Names are Trademark & © of Nintendo 1996-2023
                 </div>
             </div>
             <br><br>
@@ -2884,15 +2887,15 @@
                 <div id="video"></div>
 
             <script>
-            $('.btc_addr').click(function () {
-                    if ($('#btc_addr').text() == 'BTC address copied!') return
+            $('.eth_addr').click(function () {
+                if ($('#eth_addr').text() == 'Ethereum address copied!') return
                 // Create an auxiliary hidden input
                 var aux = document.createElement('input')
 
                 // Get the text from the element passed into the input
                 aux.setAttribute(
                     'value',
-                    document.getElementById('btc_addr').innerHTML
+                    document.getElementById('eth_addr').innerHTML
                 )
 
                 // Append the aux input to the body
@@ -2907,9 +2910,9 @@
                 // Remove the input from the body
                 document.body.removeChild(aux)
 
-                $('#btc_addr').text('BTC address copied!')
+                $('#eth_addr').text('Ethereum address copied!')
                 setTimeout(() => {
-                    $('#btc_addr').text('3HXA8kSk8cPNce1p232htgMbXLwGgb46bb')
+                    $('#eth_addr').text('0x18F24a06c6c9C925235355059c4ca43814dD15C0')
                 }, 5000)
             })
 
