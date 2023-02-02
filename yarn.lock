@@ -918,10 +918,10 @@
     "@jridgewell/resolve-uri" "3.1.0"
     "@jridgewell/sourcemap-codec" "1.4.14"
 
-"@pikalytics/calc@0.8.6":
-  version "0.8.6"
-  resolved "https://registry.yarnpkg.com/@pikalytics/calc/-/calc-0.8.6.tgz#ffff50a93715f04fdff55d98e429f0d27b9eb068"
-  integrity sha512-5wjfhy3eKCQrc9twlhsDMGHe/RCxuLwmeZ4Hi6+rftsQUrHOI0awFs7J8EBJ98ds3hplZ/t2a3Ri1JRJnBqAGA==
+"@pikalytics/calc@0.9.2":
+  version "0.9.2"
+  resolved "https://registry.yarnpkg.com/@pikalytics/calc/-/calc-0.9.2.tgz#b124c95f151b40cafb77b82d5eac34eab78adc55"
+  integrity sha512-kuSWzxXK1J1JT/m9Kd/JG+vMcv9Y88Q7u4/0lRjT8tXYchjV0mxqIYn6oWPLlTT3WxOjbGZh9QeNXFSRDGgqvQ==
   dependencies:
     "@babel/plugin-proposal-class-properties" "^7.18.6"
     "@babel/plugin-proposal-object-rest-spread" "^7.20.2"
