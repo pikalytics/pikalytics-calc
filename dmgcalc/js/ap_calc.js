@@ -673,7 +673,7 @@ function calculateAll(rerender_surv_dd = true) {
       ")</span>";
     result.koChanceText =
       p1.moves[i].bp === 0
-        ? '<a href="https://www.youtube.com/watch?v=7u6kMjWt1Rk&feature=youtu.be">you wanna dance with me?!</a>'
+        ? ""
         : getKOChanceText(
             result.damage,
             p1.moves[i],
@@ -681,10 +681,6 @@ function calculateAll(rerender_surv_dd = true) {
             field.getSide(1),
             p1.ability === "Bad Dreams"
           );
-    if (p1.moves[i].isMLG) {
-      result.koChanceText =
-        "<a href = 'https://www.youtube.com/watch?v=iD92h-M474g'>it's a one-hit KO!</a>"; //dank memes
-    }
     $(resultLocations[0][i].move + " + label").text(
       p1.moves[i].displayName.replace("Hidden Power", "HP")
     );
@@ -729,7 +725,7 @@ function calculateAll(rerender_surv_dd = true) {
       ")</span>";
     result.koChanceText =
       p2.moves[i].bp === 0
-        ? '<a href="https://www.youtube.com/watch?v=7u6kMjWt1Rk&feature=youtu.be">you wanna dance with me?!</a>'
+        ? ""
         : getKOChanceText(
             result.damage,
             p2.moves[i],
@@ -737,10 +733,6 @@ function calculateAll(rerender_surv_dd = true) {
             field.getSide(0),
             p2.ability === "Bad Dreams"
           );
-    if (p2.moves[i].isMLG) {
-      result.koChanceText =
-        "<a href = 'https://www.youtube.com/watch?v=iD92h-M474g'>it's a one-hit KO!</a>";
-    }
     $(resultLocations[1][i].move + " + label").text(
       p2.moves[i].displayName.replace("Hidden Power", "HP")
     );
