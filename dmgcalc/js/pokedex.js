@@ -15519,25 +15519,25 @@ var POKEDEX_SS = $.extend(true, {}, POKEDEX_SM, {
     formes: ["Poltchageist", "Poltchageist-Artisan"],
   },
 
-  Sinistea: {
+  Sinistcha: {
     t1: "Grass",
     t2: "Ghost",
     bs: { hp: 71, at: 60, df: 106, sa: 121, sd: 80, sp: 70 },
     w: 2.2,
     ab: "Hospitality",
     nfe: true,
-    formes: ["Sinistea", "Sinistea-Masterpiece"],
+    formes: ["Sinistcha", "Sinistcha-Masterpiece"],
   },
 
-  "Sinistea-Masterpiece": {
+  "Sinistcha-Masterpiece": {
     t1: "Grass",
     t2: "Ghost",
     bs: { hp: 71, at: 60, df: 106, sa: 121, sd: 80, sp: 70 },
     w: 2.2,
     ab: "Hospitality",
     nfe: true,
-    baseSpecies: "Sinistea",
-    formes: ["Sinistea", "Sinistea-Masterpiece"],
+    baseSpecies: "Sinistcha",
+    formes: ["Sinistcha", "Sinistcha-Masterpiece"],
   },
 
   Okidogi: {
