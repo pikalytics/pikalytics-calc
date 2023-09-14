@@ -4580,6 +4580,56 @@ MOVES_SS = $.extend(true, {}, MOVES_SS, {
   "Zen Headbutt": { bp: 80, type: "Psychic", category: "Physical" },
   "Zing Zap": { bp: 80, type: "Electric", category: "Physical" },
   "Zippy Zap": { bp: 80, type: "Electric", category: "Physical", priority: 2 },
+  "Blood Moon": {
+    bp: 140,
+    type: "Normal",
+    category: "Special",
+    zp: 200,
+  },
+  "Ivy Cudgel (Grass)": {
+    bp: 100,
+    category: "Physical",
+    zp: 180,
+    maxPower: 130,
+    type: "Grass",
+  },
+  "Ivy Cudgel (Water)": {
+    bp: 100,
+    category: "Physical",
+    zp: 180,
+    maxPower: 130,
+    type: "Water",
+  },
+  "Ivy Cudgel (Fire)": {
+    bp: 100,
+    category: "Physical",
+    zp: 180,
+    maxPower: 130,
+    type: "Fire",
+  },
+  "Ivy Cudgel (Rock)": {
+    bp: 100,
+    category: "Physical",
+    zp: 180,
+    maxPower: 130,
+    type: "Rock",
+  },
+  "Matcha Gotcha": {
+    bp: 80,
+    type: "Grass",
+    category: "Special",
+    zp: 160,
+    maxPower: 130,
+    drain: [1, 2],
+    secondaries: true,
+  },
+  "Syrup Bomb": {
+    bp: 60,
+    type: "Grass",
+    category: "Special",
+    zp: 120,
+    maxPower: 120,
+  },
 });
 
 var MAXMOVES_LOOKUP = {
