@@ -15594,6 +15594,7 @@ var POKEDEX_SS = $.extend(true, {}, POKEDEX_SM, {
     ab: "Water Absorb",
     nfe: true,
     baseSpecies: "Ogerpon",
+    isAlternateForme: true,
     formes: [
       "Ogerpon",
       "Ogerpon-Wellspring",
@@ -15614,6 +15615,7 @@ var POKEDEX_SS = $.extend(true, {}, POKEDEX_SM, {
     ab: "Mold Breaker",
     nfe: true,
     baseSpecies: "Ogerpon",
+    isAlternateForme: true,
     formes: [
       "Ogerpon",
       "Ogerpon-Wellspring",
@@ -15634,6 +15636,7 @@ var POKEDEX_SS = $.extend(true, {}, POKEDEX_SM, {
     ab: "Sturdy",
     nfe: true,
     baseSpecies: "Ogerpon",
+    isAlternateForme: true,
     formes: [
       "Ogerpon",
       "Ogerpon-Wellspring",
@@ -15653,6 +15656,7 @@ var POKEDEX_SS = $.extend(true, {}, POKEDEX_SM, {
     ab: "Embody Aspect (Teal)",
     nfe: true,
     baseSpecies: "Ogerpon",
+    isAlternateForme: true,
     formes: [
       "Ogerpon",
       "Ogerpon-Wellspring",
@@ -15673,6 +15677,7 @@ var POKEDEX_SS = $.extend(true, {}, POKEDEX_SM, {
     ab: "Embody Aspect (Wellspring)",
     nfe: true,
     baseSpecies: "Ogerpon",
+    isAlternateForme: true,
     formes: [
       "Ogerpon",
       "Ogerpon-Wellspring",
@@ -15693,6 +15698,7 @@ var POKEDEX_SS = $.extend(true, {}, POKEDEX_SM, {
     ab: "Embody Aspect (Hearthflame)",
     nfe: true,
     baseSpecies: "Ogerpon",
+    isAlternateForme: true,
     formes: [
       "Ogerpon",
       "Ogerpon-Wellspring",
@@ -15713,6 +15719,7 @@ var POKEDEX_SS = $.extend(true, {}, POKEDEX_SM, {
     ab: "Embody Aspect (Cornerstone)",
     nfe: true,
     baseSpecies: "Ogerpon",
+    isAlternateForme: true,
     formes: [
       "Ogerpon",
       "Ogerpon-Wellspring",
