@@ -21,6 +21,6 @@
     "serve": "^11.3.2"
   },
   "dependencies": {
-    "@pikalytics/calc": "0.10.0"
+    "@pikalytics/calc": "0.10.1"
   }
 }
