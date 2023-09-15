@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@pikalytics/calc@0.10.0":
-  version "0.10.0"
-  resolved "https://registry.yarnpkg.com/@pikalytics/calc/-/calc-0.10.0.tgz#535f67d80798a92d26d7d78a2d3bf76df8ba1aa8"
-  integrity sha512-VPgXUlKtOkAjaZBSnufynCnpr0F8j/Ez0Tww6ild8q87jD+Hsog0ub+Xz2mZhbvaVd+yn9Rw9fAZ2Xj2M2Sw5A==
+"@pikalytics/calc@0.10.1":
+  version "0.10.1"
+  resolved "https://registry.yarnpkg.com/@pikalytics/calc/-/calc-0.10.1.tgz#2e867a648dfab08d3b7e50cc32b1be3bd2444aaa"
+  integrity sha512-7dzFdPXPpnIPpPIX7sYqlok3jzbZWgKQ0gB2txNqj6zcosAt3IiQcXy0HHWgZML5g+UzHWDZTZu6Xl5YFnceyg==
   dependencies:
     "@types/node" "^18.14.2"
 
