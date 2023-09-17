@@ -416,11 +416,7 @@ $(".set-selector").change(function () {
           );
       }
       setSelectValueIfValid(pokeObj.find(".nature"), set.nature, "Hardy");
-      setSelectValueIfValid(
-        abilityObj,
-        pokemon.ab ? pokemon.ab : set.ability,
-        ""
-      );
+      setSelectValueIfValid(abilityObj, set.ability || pokemon.ab, "");
       setSelectValueIfValid(itemObj, set.item, "");
       for (i = 0; i < 4; i++) {
         moveObj = pokeObj.find(".move" + (i + 1) + " select.move-selector");
@@ -781,6 +777,9 @@ function calculateAll(rerender_surv_dd = true) {
   renderSpeedCalcs(p1, p2);
 
   renderSurvCalcPanel(p1, p2, rerender_surv_dd);
+
+  var calcLink = updateCalcLink([1, 2]);
+  $("#calc-link").val(calcLink);
 }
 
 function renderSpeedCalcs(p1, p2) {
@@ -917,7 +916,7 @@ function getPokemonExportSet(pokemon) {
   return set;
 }
 
-function exportPokemonLink(playerNums) {
+function updateCalcLink(playerNums) {
   var url = window.location.origin + window.location.pathname;
   for (let i in playerNums) {
     var playerNum = playerNums[i];
@@ -932,6 +931,12 @@ function exportPokemonLink(playerNums) {
 
     url += window.encodeURI(window.btoa(JSON.stringify(set)));
   }
+
+  return url;
+}
+
+function exportPokemonLink(playerNums) {
+  var url = updateCalcLink(playerNums);
 
   // Create an auxiliary hidden input
   var aux = document.createElement("input");
@@ -1258,6 +1263,22 @@ function Field() {
     $("#tailwindL").prop("checked"),
     $("#tailwindR").prop("checked"),
   ];
+  var isBeadsOfRuin = $("#beads-of-ruin").prop("checked");
+  var isVesselOfRuin = $("#vessel-of-ruin").prop("checked");
+  var isTabletsOfRuin = $("#tablets-of-ruin").prop("checked");
+  var isSwordOfRuin = $("#sword-of-ruin").prop("checked");
+
+  var isWonderRoom = $("#wonder-room").prop("checked");
+  var isMagicRoom = $("#magic-room").prop("checked");
+
+  this.weather = weather;
+  this.terrain = terrain;
+  // this.isMagicRoom = !!field.isMagicRoom;
+  // this.isWonderRoom = !!field.isWonderRoom;
+  this.isGravity = !!isGravity;
+  this.isAuraBreak = isAuraBreak || false;
+  this.isFairyAura = isFairyAura || false;
+  this.isDarkAura = isDarkAura || false;
 
   this.getFormat = function () {
     return format;
@@ -1274,6 +1295,24 @@ function Field() {
   this.getDarkAura = function () {
     return isDarkAura;
   };
+  this.getBeadsOfRuin = function () {
+    return isBeadsOfRuin;
+  };
+  this.getVesselOfRuin = function () {
+    return isVesselOfRuin;
+  };
+  this.getTabletsOfRuin = function () {
+    return isTabletsOfRuin;
+  };
+  this.getSwordOfRuin = function () {
+    return isSwordOfRuin;
+  };
+  this.getWonderRoom = function () {
+    return isWonderRoom;
+  };
+  this.getMagicRoom = function () {
+    return isMagicRoom;
+  };
   this.getWeather = function () {
     return weather;
   };
@@ -1282,6 +1321,23 @@ function Field() {
   };
   this.clearWeather = function () {
     weather = "";
+  };
+  this.getFieldForDamage = function (i) {
+    return {
+      weather: this.getWeather(),
+      terrain: this.getTerrain(),
+      gameType: this.getFormat(),
+      isGravity: this.getGravity(),
+      isAuraBreak: this.getAuraBreak(),
+      isFairyAura: this.getFairyAura(),
+      isDarkAura: this.getDarkAura(),
+      isBeadsOfRuin: this.getBeadsOfRuin(),
+      isVesselOfRuin: this.getVesselOfRuin(),
+      isTabletsOfRuin: this.getTabletsOfRuin(),
+      isSwordOfRuin: this.getSwordOfRuin(),
+      isWonderRoom: this.getWonderRoom(),
+      isMagicRoom: this.getMagicRoom(),
+    };
   };
   this.getSide = function (i) {
     return new Side(
@@ -1339,6 +1395,7 @@ function Side(
   this.isProtected = isProtect;
   this.isPowerSpot = isPowerSpot;
   this.isTailwind = isTailwind;
+  this.isBeadsOfRuin;
 }
 
 var gen,
@@ -1456,9 +1513,9 @@ $(".gen").change(function () {
       pokedex = POKEDEX_SS;
       setdex = SETDEX_SS;
       typeChart = TYPE_CHART_XY;
-      moves = MOVES_SS;
-      items = ITEMS_SS;
-      abilities = ABILITIES_SS;
+      moves = MOVES_SV;
+      items = ITEMS_SV;
+      abilities = ABILITIES_SV;
       STATS = STATS_GSC;
       calculateAllMoves = CALCULATE_ALL_MOVES_SM;
       calcHP = CALC_HP_ADV;
@@ -1822,11 +1879,7 @@ function getSetFromPikalyticsStructure(inputSet, player, sourceType) {
             );
         }
         setSelectValueIfValid(pokeObj.find(".nature"), set.nature, "Hardy");
-        setSelectValueIfValid(
-          abilityObj,
-          pokemon.ab ? pokemon.ab : set.ability,
-          ""
-        );
+        setSelectValueIfValid(abilityObj, set.ability || pokemon.ab, "");
         setSelectValueIfValid(itemObj, set.item, "");
         for (i = 0; i < 4; i++) {
           moveObj = pokeObj.find(".move" + (i + 1) + " select.move-selector");
