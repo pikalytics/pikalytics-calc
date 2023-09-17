@@ -58,15 +58,7 @@ function CALCULATE_ALL_MOVES_SM(p1, p2, field) {
       p1,
       p2,
       p1.moves[i],
-      {
-        weather: field.getWeather(),
-        terrain: field.getTerrain(),
-        gameType: field.getFormat(),
-        isGravity: field.getGravity(),
-        isAuraBreak: field.getAuraBreak(),
-        isFairyAura: field.getFairyAura(),
-        isDarkAura: field.getDarkAura(),
-      },
+      field.getFieldForDamage(),
       side1,
       side2
     );
@@ -74,15 +66,7 @@ function CALCULATE_ALL_MOVES_SM(p1, p2, field) {
       p2,
       p1,
       p2.moves[i],
-      {
-        weather: field.getWeather(),
-        terrain: field.getTerrain(),
-        gameType: field.getFormat(),
-        isGravity: field.getGravity(),
-        isAuraBreak: field.getAuraBreak(),
-        isFairyAura: field.getFairyAura(),
-        isDarkAura: field.getDarkAura(),
-      },
+      field.getFieldForDamage(),
       side2,
       side1
     );
@@ -152,6 +136,7 @@ function GET_DAMAGE_SM(attacker, defender, move, field, side1, side2) {
       spe: attacker.ivs.sp,
     },
     ability: attacker.ability,
+    abilityOn: true,
     isDynamaxed: attacker.isDynamax,
     boosts: {
       atk: attacker.boosts[AT],
@@ -197,6 +182,7 @@ function GET_DAMAGE_SM(attacker, defender, move, field, side1, side2) {
       spe: defender.ivs.sp,
     },
     ability: defender.ability,
+    abilityOn: true,
     isDynamaxed: defender.isDynamax,
     boosts: {
       atk: defender.boosts[AT],

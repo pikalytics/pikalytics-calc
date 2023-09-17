@@ -1540,6 +1540,18 @@
                             >
                         </div>
                         <div
+                            class="gen-specific g4 g5 g6 g7 g8 g9"
+                            style="width: 5.3em; margin: 5px auto;"
+                            title="Is gravity in effect?"
+                        >
+                            <input
+                                class="btn-input calc-trigger"
+                                type="checkbox"
+                                id="gravity"
+                            /><label class="btn" for="gravity">Gravity</label>
+                        </div>
+                        <hr class="gen-specific g2 g3 g4 g5 g6 g7 g8 g9">
+                        <div
                             class="gen-specific g6 g7 g8 g9"
                             style="width: 23em; margin: 5px auto;"
                             title="Select the current radiating aura."
@@ -1580,14 +1592,41 @@
                         </div>
                         <div
                             class="gen-specific g4 g5 g6 g7 g8 g9"
-                            style="width: 5.3em; margin: 5px auto;"
-                            title="Is gravity in effect?"
+                            style="width: 23em; margin: 5px auto;"
+                            title="Is room effect active?"
                         >
                             <input
                                 class="btn-input calc-trigger"
                                 type="checkbox"
-                                id="gravity"
-                            /><label class="btn" for="gravity">Gravity</label>
+                                id="wonder-room"
+                            /><label class="btn btn-wide btn-left" for="wonder-room">Wonder Room</label><input
+                                class="btn-input calc-trigger"
+                                type="checkbox"
+                                id="magic-room"
+                            /><label class="btn btn-wide btn-right" for="magic-room">Magic Room</label>
+                        </div>
+                        <div
+                            class="gen-specific g4 g5 g6 g7 g8 g9"
+                            style="width: 23em; margin: 5px auto;"
+                            title="Is active Ruin ability?"
+                        >
+                            <input
+                                class="btn-input calc-trigger"
+                                type="checkbox"
+                                id="beads-of-ruin"
+                            /><label class="btn btn-left" for="beads-of-ruin">Beads of Ruin</label><input
+                                class="btn-input calc-trigger"
+                                type="checkbox"
+                                id="tablets-of-ruin"
+                            /><label class="btn btn-mid" for="tablets-of-ruin">Tablets of Ruin</label><input
+                                class="btn-input calc-trigger"
+                                type="checkbox"
+                                id="sword-of-ruin"
+                            /><label class="btn btn-mid" for="sword-of-ruin">Sword of Ruin</label><input
+                                class="btn-input calc-trigger"
+                                type="checkbox"
+                                id="vessel-of-ruin"
+                            /><label class="btn btn-right" for="vessel-of-ruin">Vessel of Ruin</label>
                         </div>
                         <hr class="gen-specific g2 g3 g4 g5 g6 g7 g8 g9" />
 
@@ -2018,6 +2057,9 @@
                         </div>
 
                         <hr class="gen-specific g2 g3 g4 g5 g6 g7 g8 g9">
+                        <div style="">
+                            Calc link: <input id="calc-link" style="width:200px;" readonly></input>
+                        </div>
                         <div style="opacity: 0;transition: opacity 0.2s;padding-top:0px;padding-bottom:6px;" id="link_copied_text">
                             Link copied!
                         </div>
@@ -2026,7 +2068,7 @@
                                     class="btn btn-xxwide"
                                     for="exportSetFull"
                                     onclick="exportPokemonLink([1,2]);"
-                                    >Export Full Calc Link
+                                    >Export Calc Link
                             </span>
                         </div>
                         <div class="btn-group gen-specific g5 g6 g7 g8 g9">
