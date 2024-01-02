@@ -232,6 +232,7 @@ var ITEMS_SV = ITEMS_SS.concat([
   "Syrupy Apple",
   "Unremarkable Teacup",
   "Wellspring Mask",
+  "Metal Alloy",
 ]);
 
 function getItemBoostType(item) {

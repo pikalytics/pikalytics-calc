@@ -262,6 +262,10 @@ var ABILITIES_SV = ABILITIES_SS.concat([
   "Wind Power",
   "Wind Rider",
   "Zero to Hero",
+  "Tera Shell",
+  "Tera Shift",
+  "Teraform Zero",
+  "Poison Puppeteer",
 ]);
 
 ABILITIES_XY.splice(ABILITIES_XY.indexOf("Lightning Rod"), 1, "Lightning Rod");
